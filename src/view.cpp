@@ -39,7 +39,7 @@ View::View():
     m_circleColour(vec3(1.0f, 1.0f, 1.0f)),
     m_squareColour(vec3(0.5f, 0.5f, 1.0f)),
     m_shader(Shader("./shader_vertex.glsl", "./shader_fragment.glsl")),
-    m_circleResolution(10)
+    m_circleResolution(20)
 {
     glGenBuffers(1, &this->m_VBO);
     glGenVertexArrays(1, &this->m_VAO);
