@@ -12,17 +12,17 @@ public:
     //throws exception if mass is negative
     PointMass(glm::vec2 pos, float mass=1.0f);
 
-    //all overriden
-    const PointMass getMidpoint(); 
-    const PointMass getFirstPoint();
-    const PointMass getSecondPoint();
+    //all implemented
+    virtual const PointMass getFirstPoint();
+    virtual const PointMass getSecondPoint();
+    virtual const PointMass getMidpoint(); 
+    virtual const glm::vec2 getFirstPos();
+    virtual const glm::vec2 getSecondPos();
 
-    void setFirstPos(glm::vec2 pos);
-    void setSecondPos(glm::vec2 pos);
+    virtual const float getMass();
 
-    const glm::vec2 getPos();
-    const float     getMass();
-    void            setPos(glm::vec2 pos);
+    virtual void setFirstPos(glm::vec2 pos);
+    virtual void setSecondPos(glm::vec2 pos);
 
 private:
 

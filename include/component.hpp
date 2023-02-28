@@ -15,9 +15,13 @@ public:
     virtual const PointMass getSecondPoint() = 0; //overloadable (throw an error on all objects which inherit from point mass)
     virtual const PointMass getMidpoint() = 0; 
 
+    virtual const glm::vec2 getFirstPos() = 0;
+    virtual const glm::vec2 getSecondPos() = 0;
+
     virtual void setFirstPos(glm::vec2 pos) = 0; //overloadable
     virtual void setSecondPos(glm::vec2 pos) = 0; //overloadable (throw an error on all objects which inherit from point mass)
 
+    virtual const float getMass() = 0;
 };
 
 #endif
