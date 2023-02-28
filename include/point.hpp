@@ -10,7 +10,7 @@ using namespace std;
 class Point
 {
 public:
-    Point(glm::vec2 pos, float mass);
+    Point(glm::vec2 pos, float mass=1.0f);
 
     const glm::vec2 getPos();
     const float     getMass();

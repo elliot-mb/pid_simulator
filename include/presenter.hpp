@@ -5,8 +5,6 @@
 #include <GLFW/glfw3.h>
 #include <math.h>
 
-#include "shape.hpp"
-
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -23,9 +21,7 @@ These shapes and matrix transformations are then used by the view to render shap
 class Presenter {
 public:
     // initialises presenter with collection of shapes
-    Presenter(Shape shapes[]);
 
-    void setShapes(Shape shapes[]);
 
 private:
 

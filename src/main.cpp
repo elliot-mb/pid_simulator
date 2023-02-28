@@ -70,6 +70,8 @@ int main(){
 
     View view = View();
 
+    cout << view.getSquare() << endl;
+
     while(!glfwWindowShouldClose(window))
     {
         processInput(window);

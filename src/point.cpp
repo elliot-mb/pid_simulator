@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Point::Point(glm::vec2 pos, float mass):
+Point::Point(glm::vec2 pos, float mass=1.0f):
     m_mass(mass) //set const
 {
     m_pos = pos;
