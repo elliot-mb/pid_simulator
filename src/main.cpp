@@ -1,21 +1,3 @@
-/* ,; Notes ;,
-
-GLSL
-
-A shader has the following structure:
-- version
-- inputs
-- outputs 
-- uniforms
-- void main function (entrypoint)
-
-Vectors 
-
-vec3 v = { 0.1f, 1.0f, 0.2f }; v.x => 0.1f, v.z => 0.2f
-vec4 vSwizzled = v.xzxx; vSwizzled => { 0.1f, 0.2f, 0.1f, 0.1f }
-
-// ';       ;' */
-
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <math.h>
