@@ -20,13 +20,11 @@ These shapes and matrix transformations are then used by the view to render shap
 
 class Presenter {
 public:
-    // initialises presenter with collection of shapes
 
 
 private:
 
-    //reference to shapes passed at initialisation or set by setShapes
-    
+
 };
 
 #endif
