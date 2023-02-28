@@ -1,3 +1,6 @@
+#ifndef UTILS_H
+#define UTILS_H
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <math.h>
@@ -23,3 +26,5 @@ void showVec(vector<T> vect){
         cout << v << ", ";
     }
 }
+
+#endif

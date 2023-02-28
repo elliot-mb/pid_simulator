@@ -38,6 +38,8 @@ public:
 
     void setUniform(const std::string &name, glm::vec2 value) const;
 
+    void setUniform(const std::string &name, glm::vec4 value) const;
+
     void setUniform(const std::string &name, glm::mat4 value) const;
 
 

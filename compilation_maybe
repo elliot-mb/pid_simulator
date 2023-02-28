@@ -1,1 +1,0 @@
-g++ ./src/main.cpp glad.c ./src/shader.cpp ./src/view.cpp ./src/utils.cpp -o out -ldl -lglfw
