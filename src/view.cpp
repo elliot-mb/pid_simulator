@@ -22,7 +22,7 @@ void View::m_generateCircle(unsigned int sides, vector<float> &vertices, vector<
     pushVec(vec3(0.0f, 0.0f, 0.0f), vertices); 
 
     float step = 2 * (PI / sides);
-    for(int i = 0; i < sides; i++){
+    for(unsigned int i = 0; i < sides; i++){
         pushVec(vec3(cos(step * i), sin(step * i), 0.0f), vertices);
         //starts at index 0, because the circle is what goes in vertices first
         indices.push_back(m_CIRCLE_OFFSET);
