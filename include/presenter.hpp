@@ -1,3 +1,6 @@
+#ifndef PRESENTER_H
+#define PRESENTER_H
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <math.h>
@@ -18,11 +21,10 @@ public:
 
     void setShapes(Shape shapes[]);
 
-    //manipulates the EBO in order to draw a set of shapes
-    void drawShapes();
-
 private:
 
     //reference to shapes passed at initialisation or set by setShapes
     Shape m_shapes[];
 };
+
+#endif

@@ -20,19 +20,17 @@ using namespace glm;
 
 void View::m_generateCircle(unsigned int sides, vector<float> &vertices, vector<unsigned int> &indices){
     pushVec(vec3(0.0f, 0.0f, 0.0f), vertices); 
-    pushVec(this->m_circleColour, vertices);
 
     float step = 2 * (PI / sides);
     for(int i = 0; i < sides; i++){
         pushVec(vec3(cos(step * i), sin(step * i), 0.0f), vertices);
-        pushVec(this->m_circleColour, vertices);
         //starts at index 0, because the circle is what goes in vertices first
         indices.push_back(0);
         indices.push_back(i+1);
         indices.push_back(((i+1) % sides) + 1);
     }
 
-    showVec(indices); cout << endl;
+    // showVec(indices); cout << endl;
 }
 
 View::View():
@@ -56,13 +54,9 @@ View::View():
 
     //pushes a square of colour squarecolour 
     pushVec(vec3(-1.0f, -1.0f, 0.0f), vertices);     
-    pushVec(this->m_squareColour, vertices);
     pushVec(vec3(-1.0f,  1.0f, 0.0f), vertices);
-    pushVec(this->m_squareColour, vertices);
     pushVec(vec3( 1.0f,  1.0f, 0.0f), vertices);   
-    pushVec(this->m_squareColour, vertices);
     pushVec(vec3( 1.0f, -1.0f, 0.0f), vertices);
-    pushVec(this->m_squareColour, vertices);
 
     //square offset from circle verts
     const unsigned int CV = this->m_circleResolution + 1;
@@ -77,24 +71,22 @@ View::View():
     glBufferData(GL_ARRAY_BUFFER, this->m_vertices.size() * sizeof(float), &this->m_vertices[0], GL_STATIC_DRAW);
 
     //position attribute in VBO
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0); //stride of three as every vec3 is a vertex
     glEnableVertexAttribArray(0);  
-    //colour attribute in VBO
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
-    glEnableVertexAttribArray(1);  
 };
 
 void View::startFrame(){
-        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-        this->m_shader.use();
-        glBindVertexArray(m_VAO);
+    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+    this->m_shader.use();
+    glBindVertexArray(m_VAO);
 }
 
-void View::drawShape(mat4 trans, vector<unsigned int> &indices){
-    this->m_shader.setUniform("transform", trans);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(float), &indices[0], GL_STATIC_DRAW); 
-    glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+void View::drawShape(vector<unsigned int> &shapeIndices, mat4 transform, vec4 colour){
+    this->m_shader.setUniform("transform", transform);
+    this->m_shader.setUniform("colour", colour);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, shapeIndices.size() * sizeof(float), &shapeIndices[0], GL_STATIC_DRAW); 
+    glDrawElements(GL_TRIANGLES, shapeIndices.size(), GL_UNSIGNED_INT, 0);
 }
 
 vector<unsigned int>& View::getSquare() {

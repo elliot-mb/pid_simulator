@@ -42,7 +42,7 @@ int main(){
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3); //3.3 is the version we will use
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    GLFWwindow* window = glfwCreateWindow(800, 800, "LearnOpenGL", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(900, 600, "LearnOpenGL", NULL, NULL);
     if (window == NULL)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
@@ -59,15 +59,16 @@ int main(){
     }    
 
     //tell opengl the size of the rendering window
-    glViewport(0, 0, 800, 800); //lower left corner, width, height
+    glViewport(0, 0, 900, 600); //lower left corner, width, height
 
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);  
 
-    View view = View();
 
-    showVec(view.getCircle()); cout << endl;
-    showVec(view.getSquare()); cout << endl;
-    showVec(view.getVertices()); cout << endl;
+    int width, height;
+    glfwGetFramebufferSize(window, &width, &height);
+    framebuffer_size_callback(window, width, height);
+
+    View view = View();
 
     while(!glfwWindowShouldClose(window))
     {
@@ -75,7 +76,6 @@ int main(){
 
         view.startFrame();
 
-        int width, height;
         glfwGetFramebufferSize(window, &width, &height);
         float viewportRatio = getViewportRatio(width, height);
 
@@ -85,8 +85,8 @@ int main(){
         trans = glm::rotate(trans, (float)glfwGetTime(), vec3(0.0f, 0.0f, 1.0f));
 
         //shape drawing 
-        view.drawShape(transViewport, view.getSquare());
-        view.drawShape(trans, view.getCircle());
+        view.drawShape(view.getSquare(), transViewport, vec4(1.0f, 0.5f, 1.0f, 1.0f));
+        view.drawShape(view.getCircle(), trans, vec4(0.0f, 1.0f, 1.0f, 1.0f));
 
         //more transformations
         mat4 transLeft = glm::translate(transViewport, vec3(-1.0f, 0.0f, 0.0f));
@@ -94,8 +94,8 @@ int main(){
         transLeft = glm::rotate(transLeft, (float)glfwGetTime() * -2, vec3(0.0f, 0.0f, 1.0f));
 
         //more shape drawing
-        view.drawShape(transLeft, view.getCircle());
-        view.drawShape(scale(transLeft, vec3(0.1f, 1.0f, 1.0f)), view.getSquare());
+        view.drawShape(view.getCircle(), transLeft, vec4(1.0f, 1.0f, 1.0f, 1.0f));
+        view.drawShape(view.getSquare(), scale(transLeft, vec3(0.1f, 1.0f, 1.0f)), vec4(1.0, 0.5, 1.0, 1.0));
 
         glfwSwapBuffers(window);
         glfwPollEvents();    

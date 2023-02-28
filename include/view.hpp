@@ -1,3 +1,6 @@
+#ifndef VIEW_H
+#define VIEW_H
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <math.h>
@@ -25,7 +28,7 @@ public:
 
     void startFrame();
 
-    void drawShape(mat4 trans, vector<unsigned int> &indices);
+    void drawShape(vector<unsigned int> &shapeIndices, mat4 transform, vec4 colour);
 
     vector<unsigned int>& getSquare();
     vector<unsigned int>& getCircle();
@@ -49,3 +52,5 @@ private:
 
     Shader m_shader;
 };
+
+#endif
