@@ -95,7 +95,8 @@ int main(){
 
         //more shape drawing
         view.drawShape(view.getCircle(), transLeft, vec4(1.0f, 1.0f, 1.0f, 1.0f));
-        view.drawShape(view.getSquare(), scale(transLeft, vec3(0.1f, 1.0f, 1.0f)), vec4(1.0, 0.5, 1.0, 1.0));
+        mat4 transLeftSquash = glm::scale(transLeft, vec3(0.1f, 1.0f, 1.0f));
+        view.drawShape(view.getTriangle(), transLeft, view.getSquareColour());
 
         glfwSwapBuffers(window);
         glfwPollEvents();    

@@ -14,6 +14,12 @@
 #include <iostream>
 #include <vector>
 
+/*
+This class transforms representations of components as collections of points, or single points and radii, to shapes and matrix transformations.
+
+These shapes and matrix transformations are then used by the view to render shapes
+*/
+
 class Presenter {
 public:
     // initialises presenter with collection of shapes
@@ -24,7 +30,7 @@ public:
 private:
 
     //reference to shapes passed at initialisation or set by setShapes
-    Shape m_shapes[];
+    
 };
 
 #endif

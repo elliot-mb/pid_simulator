@@ -25,50 +25,30 @@ void View::m_generateCircle(unsigned int sides, vector<float> &vertices, vector<
     for(int i = 0; i < sides; i++){
         pushVec(vec3(cos(step * i), sin(step * i), 0.0f), vertices);
         //starts at index 0, because the circle is what goes in vertices first
-        indices.push_back(0);
-        indices.push_back(i+1);
-        indices.push_back(((i+1) % sides) + 1);
+        indices.push_back(m_CIRCLE_OFFSET);
+        indices.push_back(i + 1 + m_CIRCLE_OFFSET);
+        indices.push_back(((i+1) % sides) + 1 + m_CIRCLE_OFFSET);
     }
 
+    // showVec(m_vertices); cout << endl;
     // showVec(indices); cout << endl;
 }
 
 View::View():
-    m_circleColour(vec3(1.0f, 1.0f, 1.0f)),
-    m_squareColour(vec3(0.5f, 0.5f, 1.0f)),
-    m_shader(Shader("./shader_vertex.glsl", "./shader_fragment.glsl")),
-    m_circleResolution(20)
+    m_shader(Shader("./shader_vertex.glsl", "./shader_fragment.glsl"))
 {
-    glGenBuffers(1, &this->m_VBO);
-    glGenVertexArrays(1, &this->m_VAO);
-    glGenBuffers(1, &this->m_EBO);
+    glGenBuffers(1, &m_VBO);
+    glGenVertexArrays(1, &m_VAO);
+    glGenBuffers(1, &m_EBO);
 
-    glBindBuffer(GL_ARRAY_BUFFER, this->m_VBO);
-    glBindVertexArray(this->m_VAO);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->m_EBO);
+    glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
+    glBindVertexArray(m_VAO);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO);
 
-    vector<float> vertices = {};
+    //pushes a circle to vertices array
+    m_generateCircle(m_CIRCLE_RESOLUTION, m_vertices, m_circleIndices);
 
-    //pushes a circle of colour circlecolour
-    this->m_generateCircle(this->m_circleResolution, vertices, this->m_circleIndices);
-
-    //pushes a square of colour squarecolour 
-    pushVec(vec3(-1.0f, -1.0f, 0.0f), vertices);     
-    pushVec(vec3(-1.0f,  1.0f, 0.0f), vertices);
-    pushVec(vec3( 1.0f,  1.0f, 0.0f), vertices);   
-    pushVec(vec3( 1.0f, -1.0f, 0.0f), vertices);
-
-    //square offset from circle verts
-    const unsigned int CV = this->m_circleResolution + 1;
-
-    this->m_squareIndices = {
-        // unit square
-        CV, CV + 1, CV + 2,
-        CV, CV + 3, CV + 2
-    };
-
-    this->m_vertices = vertices;
-    glBufferData(GL_ARRAY_BUFFER, this->m_vertices.size() * sizeof(float), &this->m_vertices[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, m_vertices.size() * sizeof(float), &m_vertices[0], GL_STATIC_DRAW);
 
     //position attribute in VBO
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0); //stride of three as every vec3 is a vertex
@@ -78,29 +58,35 @@ View::View():
 void View::startFrame(){
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
-    this->m_shader.use();
+    m_shader.use();
     glBindVertexArray(m_VAO);
 }
 
-void View::drawShape(vector<unsigned int> &shapeIndices, mat4 transform, vec4 colour){
-    this->m_shader.setUniform("transform", transform);
-    this->m_shader.setUniform("colour", colour);
+void View::drawShape(const vector<unsigned int> &shapeIndices, mat4 &transform, const vec4 &colour){
+    m_shader.setUniform("transform", transform);
+    m_shader.setUniform("colour", colour);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, shapeIndices.size() * sizeof(float), &shapeIndices[0], GL_STATIC_DRAW); 
     glDrawElements(GL_TRIANGLES, shapeIndices.size(), GL_UNSIGNED_INT, 0);
 }
 
-vector<unsigned int>& View::getSquare() {
-    return this->m_squareIndices;
+const vector<unsigned int>& View::getSquare() {
+    return m_SQUARE_INDICES;
+}
+const vector<unsigned int>& View::getCircle() {
+    return m_circleIndices;
+}
+const vector<unsigned int>& View::getTriangle() {
+    return m_TRIANGLE_INDICES;
 }
 
-vector<unsigned int>& View::getCircle() {
-    return this->m_circleIndices;
+const vector<float>& View::getVertices(){
+    return m_vertices;
 }
 
-vector<float>& View::getVertices(){
-    return this->m_vertices;
+const unsigned int View::getVAO(){
+    return m_VAO;
 }
 
-unsigned int View::getVAO(){
-    return this->m_VAO;
-}
+const vec4 View::getCircleColour(){ return vec4(m_DEFAULT_CIRCLE_COLOUR, 1.0f); }
+
+const vec4 View::getSquareColour(){ return vec4(m_DEFAULT_SQUARE_COLOUR, 1.0f); }
