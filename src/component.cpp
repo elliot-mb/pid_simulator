@@ -2,8 +2,6 @@
 
 #include <glm/glm.hpp>
 
-<<<<<<< Updated upstream
-=======
 // const PointMass Component::getFirstPoint(){}
 // const PointMass Component::getSecondPoint(){}
 // const PointMass Component::getMidpoint(){}
@@ -15,4 +13,4 @@
 // void Component::setSecondPos(glm::vec2 pos){}
 
 // const float Component::getMass(){}
->>>>>>> Stashed changes
+

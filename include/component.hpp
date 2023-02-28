@@ -11,19 +11,11 @@ class Component
 {
 public:
 
-    const PointMass getFirstPoint();
-    const PointMass getSecondPoint(); //overloadable (throw an error on all objects which inherit from point mass)
-    const PointMass getMidpoint(); 
 
+    virtual const glm::vec2 getPos() = 0;
+    virtual void            setPos(glm::vec4 pos) = 0; 
 
-    const glm::vec2 getFirstPos();
-    const glm::vec2 getSecondPos();
-
-    void setFirstPos(glm::vec2 pos); //overloadable
-    void setSecondPos(glm::vec2 pos); //overloadable (throw an error on all objects which inherit from point mass)
-
-    virtual const float getMass();
-
+    virtual const float getMass() = 0;
 };
 
 #endif
