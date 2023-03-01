@@ -25,8 +25,8 @@ public:
 private:
     const float m_length; //calculated in constructor
 
-    const PointMass m_pointA;
-    const PointMass m_pointB;
+    PointMass m_pointA;
+    PointMass m_pointB;
 };
 
 #endif

@@ -3,6 +3,7 @@
 
 #include "component.hpp"
 #include "point_mass.hpp"
+#include "beam.hpp"
 
 #include <vector>
 
@@ -11,14 +12,16 @@ using namespace std;
 class SystemState
 {
 public:
+
     SystemState();
 
-    //add a new component to the system
-    void addComponent();
+    void addComponent(PointMass pointMass);
+    void addComponent(Beam beam);
+    const vector<Component> &getComponents(); //gets the reference to our components vector
 
 private:
     
-    vector<Component> components;
+    vector<Component> m_components;
 
 };
 

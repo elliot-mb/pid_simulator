@@ -16,7 +16,7 @@ const glm::vec2 PointMass::getPos(){
     return m_pos;
 }
 void PointMass::setPos(glm::vec4 pos){
-    assert(pos.z == 0.0f && pos.w == 0.0f); //checks we dont use it wrong
+    assert(pos.z == 0.0f && pos.w == 0.0f); //checks we dont use it incorrectly
     m_pos = glm::vec2(pos.x, pos.y); //discards other two elements
 }
 
