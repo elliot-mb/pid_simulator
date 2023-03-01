@@ -1,7 +1,7 @@
 #ifndef COMPONENT_H
 #define COMPONENT_H
 
-#include "point_mass.hpp"
+#include "component_visitor.hpp"
 
 #include <glm/glm.hpp>
 
@@ -10,7 +10,10 @@
 class Component
 {
 public:
-
+    
+    //visitor pattern
+    virtual vector<glm::mat4>& acceptDraw(ComponentVisitor& componentVisitor) = 0;
+    virtual const vector<vector<unsigned int>>& acceptIndices(ComponentVisitor& componentVisitor) = 0;
 
     virtual const glm::vec2 getPos() = 0;
     virtual void            setPos(glm::vec4 pos) = 0; 

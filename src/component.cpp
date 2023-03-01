@@ -1,6 +1,11 @@
 #include "../include/component.hpp"
+#include "../include/component_visitor.hpp"
 
 #include <glm/glm.hpp>
+
+// glm::mat4 Component::acceptDraw(ComponentVisitor& componentVisitor){
+//     return componentVisitor.visitDraw(this);
+// }
 
 // const PointMass Component::getFirstPoint(){}
 // const PointMass Component::getSecondPoint(){}

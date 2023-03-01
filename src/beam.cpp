@@ -21,6 +21,14 @@ const glm::vec2 Beam::getPosB(){
     return m_pointB.getPos();
 }
 
+vector<glm::mat4>& Beam::acceptDraw(ComponentVisitor& componentVisitor){
+        return componentVisitor.visitDraw(*this);
+}
+
+const vector<vector<unsigned int>>& Beam::acceptIndices(ComponentVisitor& componentVisitor){
+    return componentVisitor.visitIndices(*this);
+}
+
 const glm::vec2 Beam::getPos(){
     const glm::vec2 posA = m_pointA.getPos();
     const glm::vec2 posB = m_pointB.getPos();

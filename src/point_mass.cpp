@@ -12,6 +12,14 @@ PointMass::PointMass(glm::vec2 pos, float mass=1.0f):
     m_pos = pos;
 }
 
+vector<glm::mat4>& PointMass::acceptDraw(ComponentVisitor& componentVisitor){
+    return componentVisitor.visitDraw(*this);
+}
+
+const vector<vector<unsigned int>>& PointMass::acceptIndices(ComponentVisitor& componentVisitor){
+    return componentVisitor.visitIndices(*this);
+}
+
 const glm::vec2 PointMass::getPos(){
     return m_pos;
 }
