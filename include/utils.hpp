@@ -13,18 +13,22 @@
 #include <array>
 #include <iostream>
 
-using namespace glm;
 using namespace std;
 
-void pushVec(vec3 v, vector<float> &vect);
-void pushVec(vec4 v, vector<float> &vect);
+void pushVec(glm::vec3 v, vector<float> &vect);
+void pushVec(glm::vec4 v, vector<float> &vect);
 
 template <class T>
-void showVec(vector<T> vect){
-    cout << "vector:";
-    for(const T& v : vect){
-        cout << v << ", ";
+ostream& operator<<(ostream& out, const vector<T> vect){
+    vector<T> vectOneLess = vect;
+    vectOneLess.pop_back();
+    out << "vector: [";
+    for(const T& v : vectOneLess){
+        out << v << ", ";
     }
+    out << vect[vect.size() - 1];
+    out << "]";
+    return out;
 }
 
 #endif
