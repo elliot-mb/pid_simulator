@@ -1,0 +1,780 @@
+In file included from ./src/../include/point_mass.hpp:5,
+                 from ./src/../include/component_visitor.hpp:7,
+                 from ./src/../include/presenter.hpp:12,
+                 from ./src/main.cpp:8:
+./src/../include/component.hpp:17:43: error: ‘ComponentVisitor’ has not been declared
+   17 |     virtual vector<glm::mat4>& acceptDraw(ComponentVisitor& componentVisitor) = 0;
+      |                                           ^~~~~~~~~~~~~~~~
+./src/../include/component.hpp:18:63: error: ‘ComponentVisitor’ has not been declared
+   18 |     virtual const vector<vector<unsigned int>>& acceptIndices(ComponentVisitor& componentVisitor) = 0;
+      |                                                               ^~~~~~~~~~~~~~~~
+In file included from ./src/../include/component_visitor.hpp:7,
+                 from ./src/../include/presenter.hpp:12,
+                 from ./src/main.cpp:8:
+./src/../include/point_mass.hpp:17:35: error: ‘ComponentVisitor’ has not been declared
+   17 |     vector<glm::mat4>& acceptDraw(ComponentVisitor& componentVisitor);
+      |                                   ^~~~~~~~~~~~~~~~
+./src/../include/point_mass.hpp:18:55: error: ‘ComponentVisitor’ has not been declared
+   18 |     const vector<vector<unsigned int>>& acceptIndices(ComponentVisitor& componentVisitor);
+      |                                                       ^~~~~~~~~~~~~~~~
+In file included from ./src/../include/component_visitor.hpp:8,
+                 from ./src/../include/presenter.hpp:12,
+                 from ./src/main.cpp:8:
+./src/../include/beam.hpp:22:35: error: ‘ComponentVisitor’ has not been declared
+   22 |     vector<glm::mat4>& acceptDraw(ComponentVisitor& componentVisitor);
+      |                                   ^~~~~~~~~~~~~~~~
+./src/../include/beam.hpp:23:55: error: ‘ComponentVisitor’ has not been declared
+   23 |     const vector<vector<unsigned int>>& acceptIndices(ComponentVisitor& componentVisitor);
+      |                                                       ^~~~~~~~~~~~~~~~
+In file included from /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h:33,
+                 from /usr/include/c++/11/bits/allocator.h:46,
+                 from /usr/include/c++/11/string:41,
+                 from ./src/../include/shader.hpp:11,
+                 from ./src/main.cpp:5:
+/usr/include/c++/11/ext/new_allocator.h: In instantiation of ‘class __gnu_cxx::new_allocator<Component&>’:
+/usr/include/c++/11/bits/allocator.h:124:11:   required from ‘class std::allocator<Component&>’
+/usr/include/c++/11/bits/stl_vector.h:87:21:   required from ‘struct std::_Vector_base<Component&, std::allocator<Component&> >’
+/usr/include/c++/11/bits/stl_vector.h:389:11:   required from ‘class std::vector<Component&>’
+./src/../include/system_state.hpp:25:24:   required from here
+/usr/include/c++/11/ext/new_allocator.h:62:26: error: forming pointer to reference type ‘Component&’
+   62 |       typedef _Tp*       pointer;
+      |                          ^~~~~~~
+/usr/include/c++/11/ext/new_allocator.h:63:26: error: forming pointer to reference type ‘Component&’
+   63 |       typedef const _Tp* const_pointer;
+      |                          ^~~~~~~~~~~~~
+/usr/include/c++/11/ext/new_allocator.h:103:7: error: forming pointer to reference type ‘Component&’
+  103 |       allocate(size_type __n, const void* = static_cast<const void*>(0))
+      |       ^~~~~~~~
+/usr/include/c++/11/ext/new_allocator.h:132:7: error: forming pointer to reference type ‘Component&’
+  132 |       deallocate(_Tp* __p, size_type __t __attribute__ ((__unused__)))
+      |       ^~~~~~~~~~
+In file included from /usr/include/c++/11/string:41,
+                 from ./src/../include/shader.hpp:11,
+                 from ./src/main.cpp:5:
+/usr/include/c++/11/bits/allocator.h: In instantiation of ‘class std::allocator<Component&>’:
+/usr/include/c++/11/bits/stl_vector.h:87:21:   required from ‘struct std::_Vector_base<Component&, std::allocator<Component&> >’
+/usr/include/c++/11/bits/stl_vector.h:389:11:   required from ‘class std::vector<Component&>’
+./src/../include/system_state.hpp:25:24:   required from here
+/usr/include/c++/11/bits/allocator.h:133:26: error: forming pointer to reference type ‘Component&’
+  133 |       typedef _Tp*       pointer;
+      |                          ^~~~~~~
+/usr/include/c++/11/bits/allocator.h:134:26: error: forming pointer to reference type ‘Component&’
+  134 |       typedef const _Tp* const_pointer;
+      |                          ^~~~~~~~~~~~~
+In file included from /usr/include/c++/11/ext/alloc_traits.h:34,
+                 from /usr/include/c++/11/bits/basic_string.h:40,
+                 from /usr/include/c++/11/string:55,
+                 from ./src/../include/shader.hpp:11,
+                 from ./src/main.cpp:5:
+/usr/include/c++/11/bits/alloc_traits.h: In instantiation of ‘struct std::allocator_traits<std::allocator<Component&> >’:
+/usr/include/c++/11/ext/alloc_traits.h:48:10:   required from ‘struct __gnu_cxx::__alloc_traits<std::allocator<Component&>, Component&>’
+/usr/include/c++/11/bits/stl_vector.h:87:21:   required from ‘struct std::_Vector_base<Component&, std::allocator<Component&> >’
+/usr/include/c++/11/bits/stl_vector.h:389:11:   required from ‘class std::vector<Component&>’
+./src/../include/system_state.hpp:25:24:   required from here
+/usr/include/c++/11/bits/alloc_traits.h:420:13: error: forming pointer to reference type ‘Component&’
+  420 |       using pointer = _Tp*;
+      |             ^~~~~~~
+/usr/include/c++/11/bits/alloc_traits.h:423:13: error: forming pointer to reference type ‘Component&’
+  423 |       using const_pointer = const _Tp*;
+      |             ^~~~~~~~~~~~~
+In file included from /usr/include/c++/11/bits/basic_string.h:40,
+                 from /usr/include/c++/11/string:55,
+                 from ./src/../include/shader.hpp:11,
+                 from ./src/main.cpp:5:
+/usr/include/c++/11/ext/alloc_traits.h: In instantiation of ‘struct __gnu_cxx::__alloc_traits<std::allocator<Component&>, Component&>’:
+/usr/include/c++/11/bits/stl_vector.h:87:21:   required from ‘struct std::_Vector_base<Component&, std::allocator<Component&> >’
+/usr/include/c++/11/bits/stl_vector.h:389:11:   required from ‘class std::vector<Component&>’
+./src/../include/system_state.hpp:25:24:   required from here
+/usr/include/c++/11/ext/alloc_traits.h:64:23: error: ‘allocate’ has not been declared in ‘__gnu_cxx::__alloc_traits<std::allocator<Component&>, Component&>::_Base_type’
+   64 |     using _Base_type::allocate;
+      |                       ^~~~~~~~
+/usr/include/c++/11/ext/alloc_traits.h:65:23: error: ‘deallocate’ has not been declared in ‘__gnu_cxx::__alloc_traits<std::allocator<Component&>, Component&>::_Base_type’
+   65 |     using _Base_type::deallocate;
+      |                       ^~~~~~~~~~
+In file included from /usr/include/c++/11/vector:67,
+                 from ./src/../include/view.hpp:14,
+                 from ./src/main.cpp:6:
+/usr/include/c++/11/bits/stl_vector.h: In instantiation of ‘class std::vector<Component&>’:
+./src/../include/system_state.hpp:25:24:   required from here
+/usr/include/c++/11/bits/stl_vector.h:474:20: error: ‘_M_allocate’ has not been declared in ‘std::vector<Component&>::_Base’
+  474 |       using _Base::_M_allocate;
+      |                    ^~~~~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:475:20: error: ‘_M_deallocate’ has not been declared in ‘std::vector<Component&>::_Base’
+  475 |       using _Base::_M_deallocate;
+      |                    ^~~~~~~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:1168:7: error: forming pointer to reference type ‘Component&’
+ 1168 |       data() _GLIBCXX_NOEXCEPT
+      |       ^~~~
+/usr/include/c++/11/bits/stl_vector.h:1172:7: error: forming pointer to reference type ‘Component&’
+ 1172 |       data() const _GLIBCXX_NOEXCEPT
+      |       ^~~~
+/usr/include/c++/11/bits/stl_vector.h:1203:7: error: ‘void std::vector<_Tp, _Alloc>::push_back(std::vector<_Tp, _Alloc>::value_type&&) [with _Tp = Component&; _Alloc = std::allocator<Component&>; std::vector<_Tp, _Alloc>::value_type = Component&]’ cannot be overloaded with ‘void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = Component&; _Alloc = std::allocator<Component&>; std::vector<_Tp, _Alloc>::value_type = Component&]’
+ 1203 |       push_back(value_type&& __x)
+      |       ^~~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:1187:7: note: previous declaration ‘void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = Component&; _Alloc = std::allocator<Component&>; std::vector<_Tp, _Alloc>::value_type = Component&]’
+ 1187 |       push_back(const value_type& __x)
+      |       ^~~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h: In instantiation of ‘std::vector<_Tp, _Alloc>::~vector() [with _Tp = Component&; _Alloc = std::allocator<Component&>]’:
+./src/../include/system_state.hpp:14:7:   required from here
+/usr/include/c++/11/bits/stl_vector.h:680:37: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_start’
+  680 |         std::_Destroy(this->_M_impl._M_start, this->_M_impl._M_finish,
+      |                       ~~~~~~~~~~~~~~^~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:680:61: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_finish’
+  680 |         std::_Destroy(this->_M_impl._M_start, this->_M_impl._M_finish,
+      |                                               ~~~~~~~~~~~~~~^~~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h: In instantiation of ‘std::vector<_Tp, _Alloc>::vector(const std::vector<_Tp, _Alloc>&) [with _Tp = Component&; _Alloc = std::allocator<Component&>]’:
+./src/../include/system_state.hpp:14:7:   required from here
+/usr/include/c++/11/bits/stl_vector.h:557:23: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_finish’
+  557 |         this->_M_impl._M_finish =
+      |         ~~~~~~~~~~~~~~^~~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:559:53: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_start’
+  559 |                                       this->_M_impl._M_start,
+      |                                       ~~~~~~~~~~~~~~^~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h: In instantiation of ‘std::_Vector_base<_Tp, _Alloc>::~_Vector_base() [with _Tp = Component&; _Alloc = std::allocator<Component&>]’:
+/usr/include/c++/11/bits/stl_vector.h:683:7:   required from ‘std::vector<_Tp, _Alloc>::~vector() [with _Tp = Component&; _Alloc = std::allocator<Component&>]’
+./src/../include/system_state.hpp:14:7:   required from here
+/usr/include/c++/11/bits/stl_vector.h:335:31: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_start’
+  335 |         _M_deallocate(_M_impl._M_start,
+      |                       ~~~~~~~~^~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:336:31: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_end_of_storage’
+  336 |                       _M_impl._M_end_of_storage - _M_impl._M_start);
+      |                       ~~~~~~~~^~~~~~~~~~~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:336:59: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_start’
+  336 |                       _M_impl._M_end_of_storage - _M_impl._M_start);
+      |                                                   ~~~~~~~~^~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h: In instantiation of ‘std::vector<_Tp, _Alloc>::size_type std::vector<_Tp, _Alloc>::size() const [with _Tp = Component&; _Alloc = std::allocator<Component&>; std::vector<_Tp, _Alloc>::size_type = long unsigned int]’:
+/usr/include/c++/11/bits/stl_vector.h:554:19:   required from ‘std::vector<_Tp, _Alloc>::vector(const std::vector<_Tp, _Alloc>&) [with _Tp = Component&; _Alloc = std::allocator<Component&>]’
+./src/../include/system_state.hpp:14:7:   required from here
+/usr/include/c++/11/bits/stl_vector.h:919:40: error: ‘const struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_finish’
+  919 |       { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+      |                          ~~~~~~~~~~~~~~^~~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:919:66: error: ‘const struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_start’
+  919 |       { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+      |                                                    ~~~~~~~~~~~~~~^~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h: In instantiation of ‘void std::_Vector_base<_Tp, _Alloc>::_M_create_storage(std::size_t) [with _Tp = Component&; _Alloc = std::allocator<Component&>; std::size_t = long unsigned int]’:
+/usr/include/c++/11/bits/stl_vector.h:305:9:   required from ‘std::_Vector_base<_Tp, _Alloc>::_Vector_base(std::size_t, const allocator_type&) [with _Tp = Component&; _Alloc = std::allocator<Component&>; std::size_t = long unsigned int; std::_Vector_base<_Tp, _Alloc>::allocator_type = std::allocator<Component&>]’
+/usr/include/c++/11/bits/stl_vector.h:555:61:   required from ‘std::vector<_Tp, _Alloc>::vector(const std::vector<_Tp, _Alloc>&) [with _Tp = Component&; _Alloc = std::allocator<Component&>]’
+./src/../include/system_state.hpp:14:7:   required from here
+/usr/include/c++/11/bits/stl_vector.h:361:23: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_start’
+  361 |         this->_M_impl._M_start = this->_M_allocate(__n);
+      |         ~~~~~~~~~~~~~~^~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:362:23: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_finish’
+  362 |         this->_M_impl._M_finish = this->_M_impl._M_start;
+      |         ~~~~~~~~~~~~~~^~~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:362:49: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_start’
+  362 |         this->_M_impl._M_finish = this->_M_impl._M_start;
+      |                                   ~~~~~~~~~~~~~~^~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:363:23: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_end_of_storage’
+  363 |         this->_M_impl._M_end_of_storage = this->_M_impl._M_start + __n;
+      |         ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:363:57: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_start’
+  363 |         this->_M_impl._M_end_of_storage = this->_M_impl._M_start + __n;
+      |                                           ~~~~~~~~~~~~~~^~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h: In instantiation of ‘std::_Vector_base<_Tp, _Alloc>::_Vector_impl_data::_Vector_impl_data() [with _Tp = Component&; _Alloc = std::allocator<Component&>]’:
+/usr/include/c++/11/bits/stl_vector.h:137:22:   required from ‘std::_Vector_base<_Tp, _Alloc>::_Vector_impl::_Vector_impl(const _Tp_alloc_type&) [with _Tp = Component&; _Alloc = std::allocator<Component&>; std::_Vector_base<_Tp, _Alloc>::_Tp_alloc_type = std::allocator<Component&>]’
+/usr/include/c++/11/bits/stl_vector.h:304:9:   required from ‘std::_Vector_base<_Tp, _Alloc>::_Vector_base(std::size_t, const allocator_type&) [with _Tp = Component&; _Alloc = std::allocator<Component&>; std::size_t = long unsigned int; std::_Vector_base<_Tp, _Alloc>::allocator_type = std::allocator<Component&>]’
+/usr/include/c++/11/bits/stl_vector.h:555:61:   required from ‘std::vector<_Tp, _Alloc>::vector(const std::vector<_Tp, _Alloc>&) [with _Tp = Component&; _Alloc = std::allocator<Component&>]’
+./src/../include/system_state.hpp:14:7:   required from here
+/usr/include/c++/11/bits/stl_vector.h:98:54: error: using invalid field ‘std::_Vector_base<_Tp, _Alloc>::_Vector_impl_data::_M_start’
+   98 |         : _M_start(), _M_finish(), _M_end_of_storage()
+      |                                                      ^
+/usr/include/c++/11/bits/stl_vector.h:98:54: error: using invalid field ‘std::_Vector_base<_Tp, _Alloc>::_Vector_impl_data::_M_finish’
+/usr/include/c++/11/bits/stl_vector.h:98:54: error: using invalid field ‘std::_Vector_base<_Tp, _Alloc>::_Vector_impl_data::_M_end_of_storage’
+In file included from ./src/../include/component.hpp:4,
+                 from ./src/../include/point_mass.hpp:5,
+                 from ./src/../include/beam.hpp:4,
+                 from ./src/beam.cpp:1:
+./src/../include/component_visitor.hpp:17:42: error: ‘PointMass’ has not been declared
+   17 |     virtual vector<glm::mat4>& visitDraw(PointMass& pointMass) = 0;
+      |                                          ^~~~~~~~~
+./src/../include/component_visitor.hpp:18:42: error: ‘Beam’ has not been declared
+   18 |     virtual vector<glm::mat4>& visitDraw(Beam& beam) = 0;
+      |                                          ^~~~
+./src/../include/component_visitor.hpp:18:32: error: ‘virtual std::vector<glm::mat<4, 4, float, glm::packed_highp> >& ComponentVisitor::visitDraw(int&)’ cannot be overloaded with ‘virtual std::vector<glm::mat<4, 4, float, glm::packed_highp> >& ComponentVisitor::visitDraw(int&)’
+   18 |     virtual vector<glm::mat4>& visitDraw(Beam& beam) = 0;
+      |                                ^~~~~~~~~
+./src/../include/component_visitor.hpp:17:32: note: previous declaration ‘virtual std::vector<glm::mat<4, 4, float, glm::packed_highp> >& ComponentVisitor::visitDraw(int&)’
+   17 |     virtual vector<glm::mat4>& visitDraw(PointMass& pointMass) = 0;
+      |                                ^~~~~~~~~
+./src/../include/component_visitor.hpp:20:62: error: ‘PointMass’ has not been declared
+   20 |     virtual const vector<vector<unsigned int>>& visitIndices(PointMass& pointMass) = 0;
+      |                                                              ^~~~~~~~~
+./src/../include/component_visitor.hpp:21:62: error: ‘Beam’ has not been declared
+   21 |     virtual const vector<vector<unsigned int>>& visitIndices(Beam& beam) = 0;
+      |                                                              ^~~~
+./src/../include/component_visitor.hpp:21:49: error: ‘virtual const std::vector<std::vector<unsigned int> >& ComponentVisitor::visitIndices(int&)’ cannot be overloaded with ‘virtual const std::vector<std::vector<unsigned int> >& ComponentVisitor::visitIndices(int&)’
+   21 |     virtual const vector<vector<unsigned int>>& visitIndices(Beam& beam) = 0;
+      |                                                 ^~~~~~~~~~~~
+./src/../include/component_visitor.hpp:20:49: note: previous declaration ‘virtual const std::vector<std::vector<unsigned int> >& ComponentVisitor::visitIndices(int&)’
+   20 |     virtual const vector<vector<unsigned int>>& visitIndices(PointMass& pointMass) = 0;
+      |                                                 ^~~~~~~~~~~~
+./src/beam.cpp:9:1: error: default argument given for parameter 3 of ‘Beam::Beam(glm::vec2, glm::vec2, float)’ [-fpermissive]
+    9 | Beam::Beam(glm::vec2 posA, glm::vec2 posB, float mass=1.0f):
+      | ^~~~
+In file included from ./src/beam.cpp:1:
+./src/../include/beam.hpp:14:5: note: previous specification in ‘Beam::Beam(glm::vec2, glm::vec2, float)’ here
+   14 |     Beam(glm::vec2 posA, glm::vec2 posB, float mass=1.0f);
+      |     ^~~~
+./src/beam.cpp: In member function ‘virtual std::vector<glm::mat<4, 4, float, glm::packed_highp> >& Beam::acceptDraw(ComponentVisitor&)’:
+./src/beam.cpp:25:43: error: cannot convert ‘Beam’ to ‘int&’
+   25 |         return componentVisitor.visitDraw(*this);
+      |                                           ^~~~~
+      |                                           |
+      |                                           Beam
+In file included from ./src/../include/component.hpp:4,
+                 from ./src/../include/point_mass.hpp:5,
+                 from ./src/../include/beam.hpp:4,
+                 from ./src/beam.cpp:1:
+./src/../include/component_visitor.hpp:17:53: note:   initializing argument 1 of ‘virtual std::vector<glm::mat<4, 4, float, glm::packed_highp> >& ComponentVisitor::visitDraw(int&)’
+   17 |     virtual vector<glm::mat4>& visitDraw(PointMass& pointMass) = 0;
+      |                                          ~~~~~~~~~~~^~~~~~~~~
+./src/beam.cpp: In member function ‘virtual const std::vector<std::vector<unsigned int> >& Beam::acceptIndices(ComponentVisitor&)’:
+./src/beam.cpp:29:42: error: cannot convert ‘Beam’ to ‘int&’
+   29 |     return componentVisitor.visitIndices(*this);
+      |                                          ^~~~~
+      |                                          |
+      |                                          Beam
+In file included from ./src/../include/component.hpp:4,
+                 from ./src/../include/point_mass.hpp:5,
+                 from ./src/../include/beam.hpp:4,
+                 from ./src/beam.cpp:1:
+./src/../include/component_visitor.hpp:20:73: note:   initializing argument 1 of ‘virtual const std::vector<std::vector<unsigned int> >& ComponentVisitor::visitIndices(int&)’
+   20 |     virtual const vector<vector<unsigned int>>& visitIndices(PointMass& pointMass) = 0;
+      |                                                              ~~~~~~~~~~~^~~~~~~~~
+In file included from ./src/../include/component_visitor.hpp:7,
+                 from ./src/../include/component.hpp:4,
+                 from ./src/component.cpp:1:
+./src/../include/point_mass.hpp:11:1: error: expected class-name before ‘{’ token
+   11 | {
+      | ^
+./src/../include/point_mass.hpp:17:35: error: ‘ComponentVisitor’ has not been declared
+   17 |     vector<glm::mat4>& acceptDraw(ComponentVisitor& componentVisitor);
+      |                                   ^~~~~~~~~~~~~~~~
+./src/../include/point_mass.hpp:18:55: error: ‘ComponentVisitor’ has not been declared
+   18 |     const vector<vector<unsigned int>>& acceptIndices(ComponentVisitor& componentVisitor);
+      |                                                       ^~~~~~~~~~~~~~~~
+In file included from ./src/../include/component_visitor.hpp:8,
+                 from ./src/../include/component.hpp:4,
+                 from ./src/component.cpp:1:
+./src/../include/beam.hpp:11:1: error: expected class-name before ‘{’ token
+   11 | {
+      | ^
+./src/../include/beam.hpp:22:35: error: ‘ComponentVisitor’ has not been declared
+   22 |     vector<glm::mat4>& acceptDraw(ComponentVisitor& componentVisitor);
+      |                                   ^~~~~~~~~~~~~~~~
+./src/../include/beam.hpp:23:55: error: ‘ComponentVisitor’ has not been declared
+   23 |     const vector<vector<unsigned int>>& acceptIndices(ComponentVisitor& componentVisitor);
+      |                                                       ^~~~~~~~~~~~~~~~
+In file included from ./src/../include/component_visitor.hpp:8,
+                 from ./src/../include/component.hpp:4,
+                 from ./src/../include/point_mass.hpp:5,
+                 from ./src/point_mass.cpp:1:
+./src/../include/beam.hpp:11:1: error: expected class-name before ‘{’ token
+   11 | {
+      | ^
+./src/../include/beam.hpp:22:5: error: ‘vector’ does not name a type
+   22 |     vector<glm::mat4>& acceptDraw(ComponentVisitor& componentVisitor);
+      |     ^~~~~~
+./src/../include/beam.hpp:23:11: error: ‘vector’ does not name a type
+   23 |     const vector<vector<unsigned int>>& acceptIndices(ComponentVisitor& componentVisitor);
+      |           ^~~~~~
+./src/../include/beam.hpp:32:5: error: ‘PointMass’ does not name a type
+   32 |     PointMass m_pointA;
+      |     ^~~~~~~~~
+./src/../include/beam.hpp:33:5: error: ‘PointMass’ does not name a type
+   33 |     PointMass m_pointB;
+      |     ^~~~~~~~~
+In file included from ./src/../include/component.hpp:4,
+                 from ./src/../include/point_mass.hpp:5,
+                 from ./src/point_mass.cpp:1:
+./src/../include/component_visitor.hpp:17:42: error: ‘PointMass’ has not been declared
+   17 |     virtual vector<glm::mat4>& visitDraw(PointMass& pointMass) = 0;
+      |                                          ^~~~~~~~~
+./src/../include/component_visitor.hpp:20:62: error: ‘PointMass’ has not been declared
+   20 |     virtual const vector<vector<unsigned int>>& visitIndices(PointMass& pointMass) = 0;
+      |                                                              ^~~~~~~~~
+./src/point_mass.cpp:8:1: error: default argument given for parameter 2 of ‘PointMass::PointMass(glm::vec2, float)’ [-fpermissive]
+    8 | PointMass::PointMass(glm::vec2 pos, float mass=1.0f):
+      | ^~~~~~~~~
+In file included from ./src/point_mass.cpp:1:
+./src/../include/point_mass.hpp:14:5: note: previous specification in ‘PointMass::PointMass(glm::vec2, float)’ here
+   14 |     PointMass(glm::vec2 pos, float mass=1.0f);
+      |     ^~~~~~~~~
+./src/point_mass.cpp: In member function ‘virtual std::vector<glm::mat<4, 4, float, glm::packed_highp> >& PointMass::acceptDraw(ComponentVisitor&)’:
+./src/point_mass.cpp:16:38: error: no matching function for call to ‘ComponentVisitor::visitDraw(PointMass&)’
+   16 |     return componentVisitor.visitDraw(*this);
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+In file included from ./src/../include/component.hpp:4,
+                 from ./src/../include/point_mass.hpp:5,
+                 from ./src/point_mass.cpp:1:
+./src/../include/component_visitor.hpp:17:32: note: candidate: ‘virtual std::vector<glm::mat<4, 4, float, glm::packed_highp> >& ComponentVisitor::visitDraw(int&)’
+   17 |     virtual vector<glm::mat4>& visitDraw(PointMass& pointMass) = 0;
+      |                                ^~~~~~~~~
+./src/../include/component_visitor.hpp:17:53: note:   no known conversion for argument 1 from ‘PointMass’ to ‘int&’
+   17 |     virtual vector<glm::mat4>& visitDraw(PointMass& pointMass) = 0;
+      |                                          ~~~~~~~~~~~^~~~~~~~~
+./src/../include/component_visitor.hpp:18:32: note: candidate: ‘virtual std::vector<glm::mat<4, 4, float, glm::packed_highp> >& ComponentVisitor::visitDraw(Beam&)’
+   18 |     virtual vector<glm::mat4>& visitDraw(Beam& beam) = 0;
+      |                                ^~~~~~~~~
+./src/../include/component_visitor.hpp:18:48: note:   no known conversion for argument 1 from ‘PointMass’ to ‘Beam&’
+   18 |     virtual vector<glm::mat4>& visitDraw(Beam& beam) = 0;
+      |                                          ~~~~~~^~~~
+./src/point_mass.cpp: In member function ‘virtual const std::vector<std::vector<unsigned int> >& PointMass::acceptIndices(ComponentVisitor&)’:
+./src/point_mass.cpp:20:41: error: no matching function for call to ‘ComponentVisitor::visitIndices(PointMass&)’
+   20 |     return componentVisitor.visitIndices(*this);
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+In file included from ./src/../include/component.hpp:4,
+                 from ./src/../include/point_mass.hpp:5,
+                 from ./src/point_mass.cpp:1:
+./src/../include/component_visitor.hpp:20:49: note: candidate: ‘virtual const std::vector<std::vector<unsigned int> >& ComponentVisitor::visitIndices(int&)’
+   20 |     virtual const vector<vector<unsigned int>>& visitIndices(PointMass& pointMass) = 0;
+      |                                                 ^~~~~~~~~~~~
+./src/../include/component_visitor.hpp:20:73: note:   no known conversion for argument 1 from ‘PointMass’ to ‘int&’
+   20 |     virtual const vector<vector<unsigned int>>& visitIndices(PointMass& pointMass) = 0;
+      |                                                              ~~~~~~~~~~~^~~~~~~~~
+./src/../include/component_visitor.hpp:21:49: note: candidate: ‘virtual const std::vector<std::vector<unsigned int> >& ComponentVisitor::visitIndices(Beam&)’
+   21 |     virtual const vector<vector<unsigned int>>& visitIndices(Beam& beam) = 0;
+      |                                                 ^~~~~~~~~~~~
+./src/../include/component_visitor.hpp:21:68: note:   no known conversion for argument 1 from ‘PointMass’ to ‘Beam&’
+   21 |     virtual const vector<vector<unsigned int>>& visitIndices(Beam& beam) = 0;
+      |                                                              ~~~~~~^~~~
+In file included from ./src/../include/point_mass.hpp:5,
+                 from ./src/../include/component_visitor.hpp:7,
+                 from ./src/../include/presenter.hpp:12,
+                 from ./src/presenter.cpp:1:
+./src/../include/component.hpp:17:43: error: ‘ComponentVisitor’ has not been declared
+   17 |     virtual vector<glm::mat4>& acceptDraw(ComponentVisitor& componentVisitor) = 0;
+      |                                           ^~~~~~~~~~~~~~~~
+./src/../include/component.hpp:18:63: error: ‘ComponentVisitor’ has not been declared
+   18 |     virtual const vector<vector<unsigned int>>& acceptIndices(ComponentVisitor& componentVisitor) = 0;
+      |                                                               ^~~~~~~~~~~~~~~~
+In file included from ./src/../include/component_visitor.hpp:7,
+                 from ./src/../include/presenter.hpp:12,
+                 from ./src/presenter.cpp:1:
+./src/../include/point_mass.hpp:17:35: error: ‘ComponentVisitor’ has not been declared
+   17 |     vector<glm::mat4>& acceptDraw(ComponentVisitor& componentVisitor);
+      |                                   ^~~~~~~~~~~~~~~~
+./src/../include/point_mass.hpp:18:55: error: ‘ComponentVisitor’ has not been declared
+   18 |     const vector<vector<unsigned int>>& acceptIndices(ComponentVisitor& componentVisitor);
+      |                                                       ^~~~~~~~~~~~~~~~
+In file included from ./src/../include/component_visitor.hpp:8,
+                 from ./src/../include/presenter.hpp:12,
+                 from ./src/presenter.cpp:1:
+./src/../include/beam.hpp:22:35: error: ‘ComponentVisitor’ has not been declared
+   22 |     vector<glm::mat4>& acceptDraw(ComponentVisitor& componentVisitor);
+      |                                   ^~~~~~~~~~~~~~~~
+./src/../include/beam.hpp:23:55: error: ‘ComponentVisitor’ has not been declared
+   23 |     const vector<vector<unsigned int>>& acceptIndices(ComponentVisitor& componentVisitor);
+      |                                                       ^~~~~~~~~~~~~~~~
+In file included from /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h:33,
+                 from /usr/include/c++/11/bits/allocator.h:46,
+                 from /usr/include/c++/11/vector:64,
+                 from ./src/../include/component_visitor.hpp:5,
+                 from ./src/../include/presenter.hpp:12,
+                 from ./src/presenter.cpp:1:
+/usr/include/c++/11/ext/new_allocator.h: In instantiation of ‘class __gnu_cxx::new_allocator<Component&>’:
+/usr/include/c++/11/bits/allocator.h:124:11:   required from ‘class std::allocator<Component&>’
+/usr/include/c++/11/bits/stl_vector.h:87:21:   required from ‘struct std::_Vector_base<Component&, std::allocator<Component&> >’
+/usr/include/c++/11/bits/stl_vector.h:389:11:   required from ‘class std::vector<Component&>’
+./src/../include/system_state.hpp:25:24:   required from here
+/usr/include/c++/11/ext/new_allocator.h:62:26: error: forming pointer to reference type ‘Component&’
+   62 |       typedef _Tp*       pointer;
+      |                          ^~~~~~~
+/usr/include/c++/11/ext/new_allocator.h:63:26: error: forming pointer to reference type ‘Component&’
+   63 |       typedef const _Tp* const_pointer;
+      |                          ^~~~~~~~~~~~~
+/usr/include/c++/11/ext/new_allocator.h:103:7: error: forming pointer to reference type ‘Component&’
+  103 |       allocate(size_type __n, const void* = static_cast<const void*>(0))
+      |       ^~~~~~~~
+/usr/include/c++/11/ext/new_allocator.h:132:7: error: forming pointer to reference type ‘Component&’
+  132 |       deallocate(_Tp* __p, size_type __t __attribute__ ((__unused__)))
+      |       ^~~~~~~~~~
+In file included from /usr/include/c++/11/vector:64,
+                 from ./src/../include/component_visitor.hpp:5,
+                 from ./src/../include/presenter.hpp:12,
+                 from ./src/presenter.cpp:1:
+/usr/include/c++/11/bits/allocator.h: In instantiation of ‘class std::allocator<Component&>’:
+/usr/include/c++/11/bits/stl_vector.h:87:21:   required from ‘struct std::_Vector_base<Component&, std::allocator<Component&> >’
+/usr/include/c++/11/bits/stl_vector.h:389:11:   required from ‘class std::vector<Component&>’
+./src/../include/system_state.hpp:25:24:   required from here
+/usr/include/c++/11/bits/allocator.h:133:26: error: forming pointer to reference type ‘Component&’
+  133 |       typedef _Tp*       pointer;
+      |                          ^~~~~~~
+/usr/include/c++/11/bits/allocator.h:134:26: error: forming pointer to reference type ‘Component&’
+  134 |       typedef const _Tp* const_pointer;
+      |                          ^~~~~~~~~~~~~
+In file included from /usr/include/c++/11/ext/alloc_traits.h:34,
+                 from /usr/include/c++/11/bits/stl_uninitialized.h:64,
+                 from /usr/include/c++/11/vector:66,
+                 from ./src/../include/component_visitor.hpp:5,
+                 from ./src/../include/presenter.hpp:12,
+                 from ./src/presenter.cpp:1:
+/usr/include/c++/11/bits/alloc_traits.h: In instantiation of ‘struct std::allocator_traits<std::allocator<Component&> >’:
+/usr/include/c++/11/ext/alloc_traits.h:48:10:   required from ‘struct __gnu_cxx::__alloc_traits<std::allocator<Component&>, Component&>’
+/usr/include/c++/11/bits/stl_vector.h:87:21:   required from ‘struct std::_Vector_base<Component&, std::allocator<Component&> >’
+/usr/include/c++/11/bits/stl_vector.h:389:11:   required from ‘class std::vector<Component&>’
+./src/../include/system_state.hpp:25:24:   required from here
+/usr/include/c++/11/bits/alloc_traits.h:420:13: error: forming pointer to reference type ‘Component&’
+  420 |       using pointer = _Tp*;
+      |             ^~~~~~~
+/usr/include/c++/11/bits/alloc_traits.h:423:13: error: forming pointer to reference type ‘Component&’
+  423 |       using const_pointer = const _Tp*;
+      |             ^~~~~~~~~~~~~
+In file included from /usr/include/c++/11/bits/stl_uninitialized.h:64,
+                 from /usr/include/c++/11/vector:66,
+                 from ./src/../include/component_visitor.hpp:5,
+                 from ./src/../include/presenter.hpp:12,
+                 from ./src/presenter.cpp:1:
+/usr/include/c++/11/ext/alloc_traits.h: In instantiation of ‘struct __gnu_cxx::__alloc_traits<std::allocator<Component&>, Component&>’:
+/usr/include/c++/11/bits/stl_vector.h:87:21:   required from ‘struct std::_Vector_base<Component&, std::allocator<Component&> >’
+/usr/include/c++/11/bits/stl_vector.h:389:11:   required from ‘class std::vector<Component&>’
+./src/../include/system_state.hpp:25:24:   required from here
+/usr/include/c++/11/ext/alloc_traits.h:64:23: error: ‘allocate’ has not been declared in ‘__gnu_cxx::__alloc_traits<std::allocator<Component&>, Component&>::_Base_type’
+   64 |     using _Base_type::allocate;
+      |                       ^~~~~~~~
+/usr/include/c++/11/ext/alloc_traits.h:65:23: error: ‘deallocate’ has not been declared in ‘__gnu_cxx::__alloc_traits<std::allocator<Component&>, Component&>::_Base_type’
+   65 |     using _Base_type::deallocate;
+      |                       ^~~~~~~~~~
+In file included from /usr/include/c++/11/vector:67,
+                 from ./src/../include/component_visitor.hpp:5,
+                 from ./src/../include/presenter.hpp:12,
+                 from ./src/presenter.cpp:1:
+/usr/include/c++/11/bits/stl_vector.h: In instantiation of ‘class std::vector<Component&>’:
+./src/../include/system_state.hpp:25:24:   required from here
+/usr/include/c++/11/bits/stl_vector.h:474:20: error: ‘_M_allocate’ has not been declared in ‘std::vector<Component&>::_Base’
+  474 |       using _Base::_M_allocate;
+      |                    ^~~~~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:475:20: error: ‘_M_deallocate’ has not been declared in ‘std::vector<Component&>::_Base’
+  475 |       using _Base::_M_deallocate;
+      |                    ^~~~~~~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:1168:7: error: forming pointer to reference type ‘Component&’
+ 1168 |       data() _GLIBCXX_NOEXCEPT
+      |       ^~~~
+/usr/include/c++/11/bits/stl_vector.h:1172:7: error: forming pointer to reference type ‘Component&’
+ 1172 |       data() const _GLIBCXX_NOEXCEPT
+      |       ^~~~
+/usr/include/c++/11/bits/stl_vector.h:1203:7: error: ‘void std::vector<_Tp, _Alloc>::push_back(std::vector<_Tp, _Alloc>::value_type&&) [with _Tp = Component&; _Alloc = std::allocator<Component&>; std::vector<_Tp, _Alloc>::value_type = Component&]’ cannot be overloaded with ‘void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = Component&; _Alloc = std::allocator<Component&>; std::vector<_Tp, _Alloc>::value_type = Component&]’
+ 1203 |       push_back(value_type&& __x)
+      |       ^~~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:1187:7: note: previous declaration ‘void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = Component&; _Alloc = std::allocator<Component&>; std::vector<_Tp, _Alloc>::value_type = Component&]’
+ 1187 |       push_back(const value_type& __x)
+      |       ^~~~~~~~~
+./src/presenter.cpp: In member function ‘virtual std::vector<glm::mat<4, 4, float, glm::packed_highp> >& Presenter::visitDraw(PointMass&)’:
+./src/presenter.cpp:12:12: warning: reference to local variable ‘res’ returned [-Wreturn-local-addr]
+   12 |     return res;
+      |            ^~~
+./src/presenter.cpp:10:23: note: declared here
+   10 |     vector<glm::mat4> res;
+      |                       ^~~
+./src/presenter.cpp: In member function ‘virtual std::vector<glm::mat<4, 4, float, glm::packed_highp> >& Presenter::visitDraw(Beam&)’:
+./src/presenter.cpp:17:12: warning: reference to local variable ‘res’ returned [-Wreturn-local-addr]
+   17 |     return res;
+      |            ^~~
+./src/presenter.cpp:15:23: note: declared here
+   15 |     vector<glm::mat4> res;
+      |                       ^~~
+./src/presenter.cpp: In member function ‘virtual const std::vector<std::vector<unsigned int> >& Presenter::visitIndices(PointMass&)’:
+./src/presenter.cpp:24:12: warning: reference to local variable ‘res’ returned [-Wreturn-local-addr]
+   24 |     return res;
+      |            ^~~
+./src/presenter.cpp:22:34: note: declared here
+   22 |     vector<vector<unsigned int>> res;
+      |                                  ^~~
+./src/presenter.cpp: In member function ‘virtual const std::vector<std::vector<unsigned int> >& Presenter::visitIndices(Beam&)’:
+./src/presenter.cpp:29:12: warning: reference to local variable ‘res’ returned [-Wreturn-local-addr]
+   29 |     return res;
+      |            ^~~
+./src/presenter.cpp:27:34: note: declared here
+   27 |     vector<vector<unsigned int>> res;
+      |                                  ^~~
+In file included from /usr/include/c++/11/bits/stl_vector.h:63,
+                 from /usr/include/c++/11/vector:67,
+                 from ./src/../include/component_visitor.hpp:5,
+                 from ./src/../include/presenter.hpp:12,
+                 from ./src/presenter.cpp:1:
+/usr/include/c++/11/initializer_list: In instantiation of ‘class std::initializer_list<Component&>’:
+./src/presenter.cpp:40:65:   required from here
+/usr/include/c++/11/initializer_list:54:33: error: forming pointer to reference type ‘Component&’
+   54 |       typedef const _E*         iterator;
+      |                                 ^~~~~~~~
+/usr/include/c++/11/initializer_list:55:33: error: forming pointer to reference type ‘Component&’
+   55 |       typedef const _E*         const_iterator;
+      |                                 ^~~~~~~~~~~~~~
+./src/presenter.cpp: In member function ‘void Presenter::drawView()’:
+./src/presenter.cpp:45:53: error: cannot convert ‘Presenter’ to ‘int&’
+   45 |         vector<glm::mat4> transforms = c.acceptDraw(*this);
+      |                                                     ^~~~~
+      |                                                     |
+      |                                                     Presenter
+In file included from ./src/../include/point_mass.hpp:5,
+                 from ./src/../include/component_visitor.hpp:7,
+                 from ./src/../include/presenter.hpp:12,
+                 from ./src/presenter.cpp:1:
+./src/../include/component.hpp:17:61: note:   initializing argument 1 of ‘virtual std::vector<glm::mat<4, 4, float, glm::packed_highp> >& Component::acceptDraw(int&)’
+   17 |     virtual vector<glm::mat4>& acceptDraw(ComponentVisitor& componentVisitor) = 0;
+      |                                           ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~
+./src/presenter.cpp:46:63: error: cannot convert ‘Presenter’ to ‘int&’
+   46 |         vector<vector<unsigned int>> shapes = c.acceptIndices(*this);
+      |                                                               ^~~~~
+      |                                                               |
+      |                                                               Presenter
+In file included from ./src/../include/point_mass.hpp:5,
+                 from ./src/../include/component_visitor.hpp:7,
+                 from ./src/../include/presenter.hpp:12,
+                 from ./src/presenter.cpp:1:
+./src/../include/component.hpp:18:81: note:   initializing argument 1 of ‘virtual const std::vector<std::vector<unsigned int> >& Component::acceptIndices(int&)’
+   18 |     virtual const vector<vector<unsigned int>>& acceptIndices(ComponentVisitor& componentVisitor) = 0;
+      |                                                               ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~
+In file included from /usr/include/c++/11/vector:67,
+                 from ./src/../include/component_visitor.hpp:5,
+                 from ./src/../include/presenter.hpp:12,
+                 from ./src/presenter.cpp:1:
+/usr/include/c++/11/bits/stl_vector.h: In instantiation of ‘std::vector<_Tp, _Alloc>::~vector() [with _Tp = Component&; _Alloc = std::allocator<Component&>]’:
+./src/../include/system_state.hpp:14:7:   required from here
+/usr/include/c++/11/bits/stl_vector.h:680:37: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_start’
+  680 |         std::_Destroy(this->_M_impl._M_start, this->_M_impl._M_finish,
+      |                       ~~~~~~~~~~~~~~^~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:680:61: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_finish’
+  680 |         std::_Destroy(this->_M_impl._M_start, this->_M_impl._M_finish,
+      |                                               ~~~~~~~~~~~~~~^~~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h: In instantiation of ‘std::vector<_Tp, _Alloc>::vector(const std::vector<_Tp, _Alloc>&) [with _Tp = Component&; _Alloc = std::allocator<Component&>]’:
+./src/presenter.cpp:40:65:   required from here
+/usr/include/c++/11/bits/stl_vector.h:557:23: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_finish’
+  557 |         this->_M_impl._M_finish =
+      |         ~~~~~~~~~~~~~~^~~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:559:53: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_start’
+  559 |                                       this->_M_impl._M_start,
+      |                                       ~~~~~~~~~~~~~~^~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h: In instantiation of ‘std::vector<_Tp, _Alloc>::size_type std::vector<_Tp, _Alloc>::size() const [with _Tp = Component&; _Alloc = std::allocator<Component&>; std::vector<_Tp, _Alloc>::size_type = long unsigned int]’:
+./src/presenter.cpp:42:48:   required from here
+/usr/include/c++/11/bits/stl_vector.h:919:40: error: ‘const struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_finish’
+  919 |       { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+      |                          ~~~~~~~~~~~~~~^~~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:919:66: error: ‘const struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_start’
+  919 |       { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+      |                                                    ~~~~~~~~~~~~~~^~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h: In instantiation of ‘std::vector<_Tp, _Alloc>::reference std::vector<_Tp, _Alloc>::operator[](std::vector<_Tp, _Alloc>::size_type) [with _Tp = Component&; _Alloc = std::allocator<Component&>; std::vector<_Tp, _Alloc>::reference = Component&; std::vector<_Tp, _Alloc>::size_type = long unsigned int]’:
+./src/presenter.cpp:43:36:   required from here
+/usr/include/c++/11/bits/stl_vector.h:1046:32: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_start’
+ 1046 |         return *(this->_M_impl._M_start + __n);
+      |                  ~~~~~~~~~~~~~~^~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h: In instantiation of ‘std::_Vector_base<_Tp, _Alloc>::~_Vector_base() [with _Tp = Component&; _Alloc = std::allocator<Component&>]’:
+/usr/include/c++/11/bits/stl_vector.h:683:7:   required from ‘std::vector<_Tp, _Alloc>::~vector() [with _Tp = Component&; _Alloc = std::allocator<Component&>]’
+./src/../include/system_state.hpp:14:7:   required from here
+/usr/include/c++/11/bits/stl_vector.h:335:31: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_start’
+  335 |         _M_deallocate(_M_impl._M_start,
+      |                       ~~~~~~~~^~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:336:31: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_end_of_storage’
+  336 |                       _M_impl._M_end_of_storage - _M_impl._M_start);
+      |                       ~~~~~~~~^~~~~~~~~~~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:336:59: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_start’
+  336 |                       _M_impl._M_end_of_storage - _M_impl._M_start);
+      |                                                   ~~~~~~~~^~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h: In instantiation of ‘void std::_Vector_base<_Tp, _Alloc>::_M_create_storage(std::size_t) [with _Tp = Component&; _Alloc = std::allocator<Component&>; std::size_t = long unsigned int]’:
+/usr/include/c++/11/bits/stl_vector.h:305:9:   required from ‘std::_Vector_base<_Tp, _Alloc>::_Vector_base(std::size_t, const allocator_type&) [with _Tp = Component&; _Alloc = std::allocator<Component&>; std::size_t = long unsigned int; std::_Vector_base<_Tp, _Alloc>::allocator_type = std::allocator<Component&>]’
+/usr/include/c++/11/bits/stl_vector.h:555:61:   required from ‘std::vector<_Tp, _Alloc>::vector(const std::vector<_Tp, _Alloc>&) [with _Tp = Component&; _Alloc = std::allocator<Component&>]’
+./src/presenter.cpp:40:65:   required from here
+/usr/include/c++/11/bits/stl_vector.h:361:23: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_start’
+  361 |         this->_M_impl._M_start = this->_M_allocate(__n);
+      |         ~~~~~~~~~~~~~~^~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:362:23: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_finish’
+  362 |         this->_M_impl._M_finish = this->_M_impl._M_start;
+      |         ~~~~~~~~~~~~~~^~~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:362:49: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_start’
+  362 |         this->_M_impl._M_finish = this->_M_impl._M_start;
+      |                                   ~~~~~~~~~~~~~~^~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:363:23: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_end_of_storage’
+  363 |         this->_M_impl._M_end_of_storage = this->_M_impl._M_start + __n;
+      |         ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:363:57: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_start’
+  363 |         this->_M_impl._M_end_of_storage = this->_M_impl._M_start + __n;
+      |                                           ~~~~~~~~~~~~~~^~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h: In instantiation of ‘std::_Vector_base<_Tp, _Alloc>::_Vector_impl_data::_Vector_impl_data() [with _Tp = Component&; _Alloc = std::allocator<Component&>]’:
+/usr/include/c++/11/bits/stl_vector.h:137:22:   required from ‘std::_Vector_base<_Tp, _Alloc>::_Vector_impl::_Vector_impl(const _Tp_alloc_type&) [with _Tp = Component&; _Alloc = std::allocator<Component&>; std::_Vector_base<_Tp, _Alloc>::_Tp_alloc_type = std::allocator<Component&>]’
+/usr/include/c++/11/bits/stl_vector.h:304:9:   required from ‘std::_Vector_base<_Tp, _Alloc>::_Vector_base(std::size_t, const allocator_type&) [with _Tp = Component&; _Alloc = std::allocator<Component&>; std::size_t = long unsigned int; std::_Vector_base<_Tp, _Alloc>::allocator_type = std::allocator<Component&>]’
+/usr/include/c++/11/bits/stl_vector.h:555:61:   required from ‘std::vector<_Tp, _Alloc>::vector(const std::vector<_Tp, _Alloc>&) [with _Tp = Component&; _Alloc = std::allocator<Component&>]’
+./src/presenter.cpp:40:65:   required from here
+/usr/include/c++/11/bits/stl_vector.h:98:54: error: using invalid field ‘std::_Vector_base<_Tp, _Alloc>::_Vector_impl_data::_M_start’
+   98 |         : _M_start(), _M_finish(), _M_end_of_storage()
+      |                                                      ^
+/usr/include/c++/11/bits/stl_vector.h:98:54: error: using invalid field ‘std::_Vector_base<_Tp, _Alloc>::_Vector_impl_data::_M_finish’
+/usr/include/c++/11/bits/stl_vector.h:98:54: error: using invalid field ‘std::_Vector_base<_Tp, _Alloc>::_Vector_impl_data::_M_end_of_storage’
+In file included from ./src/../include/component_visitor.hpp:7,
+                 from ./src/../include/component.hpp:4,
+                 from ./src/../include/system_state.hpp:4,
+                 from ./src/system_state.cpp:1:
+./src/../include/point_mass.hpp:11:1: error: expected class-name before ‘{’ token
+   11 | {
+      | ^
+./src/../include/point_mass.hpp:17:35: error: ‘ComponentVisitor’ has not been declared
+   17 |     vector<glm::mat4>& acceptDraw(ComponentVisitor& componentVisitor);
+      |                                   ^~~~~~~~~~~~~~~~
+./src/../include/point_mass.hpp:18:55: error: ‘ComponentVisitor’ has not been declared
+   18 |     const vector<vector<unsigned int>>& acceptIndices(ComponentVisitor& componentVisitor);
+      |                                                       ^~~~~~~~~~~~~~~~
+In file included from ./src/../include/component_visitor.hpp:8,
+                 from ./src/../include/component.hpp:4,
+                 from ./src/../include/system_state.hpp:4,
+                 from ./src/system_state.cpp:1:
+./src/../include/beam.hpp:11:1: error: expected class-name before ‘{’ token
+   11 | {
+      | ^
+./src/../include/beam.hpp:22:35: error: ‘ComponentVisitor’ has not been declared
+   22 |     vector<glm::mat4>& acceptDraw(ComponentVisitor& componentVisitor);
+      |                                   ^~~~~~~~~~~~~~~~
+./src/../include/beam.hpp:23:55: error: ‘ComponentVisitor’ has not been declared
+   23 |     const vector<vector<unsigned int>>& acceptIndices(ComponentVisitor& componentVisitor);
+      |                                                       ^~~~~~~~~~~~~~~~
+In file included from /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h:33,
+                 from /usr/include/c++/11/bits/allocator.h:46,
+                 from /usr/include/c++/11/vector:64,
+                 from ./src/../include/component_visitor.hpp:5,
+                 from ./src/../include/component.hpp:4,
+                 from ./src/../include/system_state.hpp:4,
+                 from ./src/system_state.cpp:1:
+/usr/include/c++/11/ext/new_allocator.h: In instantiation of ‘class __gnu_cxx::new_allocator<Component&>’:
+/usr/include/c++/11/bits/allocator.h:124:11:   required from ‘class std::allocator<Component&>’
+/usr/include/c++/11/bits/stl_vector.h:87:21:   required from ‘struct std::_Vector_base<Component&, std::allocator<Component&> >’
+/usr/include/c++/11/bits/stl_vector.h:389:11:   required from ‘class std::vector<Component&>’
+./src/../include/system_state.hpp:25:24:   required from here
+/usr/include/c++/11/ext/new_allocator.h:62:26: error: forming pointer to reference type ‘Component&’
+   62 |       typedef _Tp*       pointer;
+      |                          ^~~~~~~
+/usr/include/c++/11/ext/new_allocator.h:63:26: error: forming pointer to reference type ‘Component&’
+   63 |       typedef const _Tp* const_pointer;
+      |                          ^~~~~~~~~~~~~
+/usr/include/c++/11/ext/new_allocator.h:103:7: error: forming pointer to reference type ‘Component&’
+  103 |       allocate(size_type __n, const void* = static_cast<const void*>(0))
+      |       ^~~~~~~~
+/usr/include/c++/11/ext/new_allocator.h:132:7: error: forming pointer to reference type ‘Component&’
+  132 |       deallocate(_Tp* __p, size_type __t __attribute__ ((__unused__)))
+      |       ^~~~~~~~~~
+In file included from /usr/include/c++/11/vector:64,
+                 from ./src/../include/component_visitor.hpp:5,
+                 from ./src/../include/component.hpp:4,
+                 from ./src/../include/system_state.hpp:4,
+                 from ./src/system_state.cpp:1:
+/usr/include/c++/11/bits/allocator.h: In instantiation of ‘class std::allocator<Component&>’:
+/usr/include/c++/11/bits/stl_vector.h:87:21:   required from ‘struct std::_Vector_base<Component&, std::allocator<Component&> >’
+/usr/include/c++/11/bits/stl_vector.h:389:11:   required from ‘class std::vector<Component&>’
+./src/../include/system_state.hpp:25:24:   required from here
+/usr/include/c++/11/bits/allocator.h:133:26: error: forming pointer to reference type ‘Component&’
+  133 |       typedef _Tp*       pointer;
+      |                          ^~~~~~~
+/usr/include/c++/11/bits/allocator.h:134:26: error: forming pointer to reference type ‘Component&’
+  134 |       typedef const _Tp* const_pointer;
+      |                          ^~~~~~~~~~~~~
+In file included from /usr/include/c++/11/ext/alloc_traits.h:34,
+                 from /usr/include/c++/11/bits/stl_uninitialized.h:64,
+                 from /usr/include/c++/11/vector:66,
+                 from ./src/../include/component_visitor.hpp:5,
+                 from ./src/../include/component.hpp:4,
+                 from ./src/../include/system_state.hpp:4,
+                 from ./src/system_state.cpp:1:
+/usr/include/c++/11/bits/alloc_traits.h: In instantiation of ‘struct std::allocator_traits<std::allocator<Component&> >’:
+/usr/include/c++/11/ext/alloc_traits.h:48:10:   required from ‘struct __gnu_cxx::__alloc_traits<std::allocator<Component&>, Component&>’
+/usr/include/c++/11/bits/stl_vector.h:87:21:   required from ‘struct std::_Vector_base<Component&, std::allocator<Component&> >’
+/usr/include/c++/11/bits/stl_vector.h:389:11:   required from ‘class std::vector<Component&>’
+./src/../include/system_state.hpp:25:24:   required from here
+/usr/include/c++/11/bits/alloc_traits.h:420:13: error: forming pointer to reference type ‘Component&’
+  420 |       using pointer = _Tp*;
+      |             ^~~~~~~
+/usr/include/c++/11/bits/alloc_traits.h:423:13: error: forming pointer to reference type ‘Component&’
+  423 |       using const_pointer = const _Tp*;
+      |             ^~~~~~~~~~~~~
+In file included from /usr/include/c++/11/bits/stl_uninitialized.h:64,
+                 from /usr/include/c++/11/vector:66,
+                 from ./src/../include/component_visitor.hpp:5,
+                 from ./src/../include/component.hpp:4,
+                 from ./src/../include/system_state.hpp:4,
+                 from ./src/system_state.cpp:1:
+/usr/include/c++/11/ext/alloc_traits.h: In instantiation of ‘struct __gnu_cxx::__alloc_traits<std::allocator<Component&>, Component&>’:
+/usr/include/c++/11/bits/stl_vector.h:87:21:   required from ‘struct std::_Vector_base<Component&, std::allocator<Component&> >’
+/usr/include/c++/11/bits/stl_vector.h:389:11:   required from ‘class std::vector<Component&>’
+./src/../include/system_state.hpp:25:24:   required from here
+/usr/include/c++/11/ext/alloc_traits.h:64:23: error: ‘allocate’ has not been declared in ‘__gnu_cxx::__alloc_traits<std::allocator<Component&>, Component&>::_Base_type’
+   64 |     using _Base_type::allocate;
+      |                       ^~~~~~~~
+/usr/include/c++/11/ext/alloc_traits.h:65:23: error: ‘deallocate’ has not been declared in ‘__gnu_cxx::__alloc_traits<std::allocator<Component&>, Component&>::_Base_type’
+   65 |     using _Base_type::deallocate;
+      |                       ^~~~~~~~~~
+In file included from /usr/include/c++/11/vector:67,
+                 from ./src/../include/component_visitor.hpp:5,
+                 from ./src/../include/component.hpp:4,
+                 from ./src/../include/system_state.hpp:4,
+                 from ./src/system_state.cpp:1:
+/usr/include/c++/11/bits/stl_vector.h: In instantiation of ‘class std::vector<Component&>’:
+./src/../include/system_state.hpp:25:24:   required from here
+/usr/include/c++/11/bits/stl_vector.h:474:20: error: ‘_M_allocate’ has not been declared in ‘std::vector<Component&>::_Base’
+  474 |       using _Base::_M_allocate;
+      |                    ^~~~~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:475:20: error: ‘_M_deallocate’ has not been declared in ‘std::vector<Component&>::_Base’
+  475 |       using _Base::_M_deallocate;
+      |                    ^~~~~~~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:1168:7: error: forming pointer to reference type ‘Component&’
+ 1168 |       data() _GLIBCXX_NOEXCEPT
+      |       ^~~~
+/usr/include/c++/11/bits/stl_vector.h:1172:7: error: forming pointer to reference type ‘Component&’
+ 1172 |       data() const _GLIBCXX_NOEXCEPT
+      |       ^~~~
+/usr/include/c++/11/bits/stl_vector.h:1203:7: error: ‘void std::vector<_Tp, _Alloc>::push_back(std::vector<_Tp, _Alloc>::value_type&&) [with _Tp = Component&; _Alloc = std::allocator<Component&>; std::vector<_Tp, _Alloc>::value_type = Component&]’ cannot be overloaded with ‘void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = Component&; _Alloc = std::allocator<Component&>; std::vector<_Tp, _Alloc>::value_type = Component&]’
+ 1203 |       push_back(value_type&& __x)
+      |       ^~~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:1187:7: note: previous declaration ‘void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = Component&; _Alloc = std::allocator<Component&>; std::vector<_Tp, _Alloc>::value_type = Component&]’
+ 1187 |       push_back(const value_type& __x)
+      |       ^~~~~~~~~
+./src/system_state.cpp: In member function ‘void SystemState::addComponent(PointMass&)’:
+./src/system_state.cpp:8:28: error: cannot convert ‘PointMass’ to ‘Component&’
+    8 |     m_components.push_back(pointMass);
+      |                            ^~~~~~~~~
+      |                            |
+      |                            PointMass
+In file included from /usr/include/c++/11/vector:67,
+                 from ./src/../include/component_visitor.hpp:5,
+                 from ./src/../include/component.hpp:4,
+                 from ./src/../include/system_state.hpp:4,
+                 from ./src/system_state.cpp:1:
+/usr/include/c++/11/bits/stl_vector.h:1187:35: note:   initializing argument 1 of ‘void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = Component&; _Alloc = std::allocator<Component&>; std::vector<_Tp, _Alloc>::value_type = Component&]’
+ 1187 |       push_back(const value_type& __x)
+      |                 ~~~~~~~~~~~~~~~~~~^~~
+./src/system_state.cpp: In member function ‘void SystemState::addComponent(Beam&)’:
+./src/system_state.cpp:12:28: error: cannot convert ‘Beam’ to ‘Component&’
+   12 |     m_components.push_back(beam);
+      |                            ^~~~
+      |                            |
+      |                            Beam
+In file included from /usr/include/c++/11/vector:67,
+                 from ./src/../include/component_visitor.hpp:5,
+                 from ./src/../include/component.hpp:4,
+                 from ./src/../include/system_state.hpp:4,
+                 from ./src/system_state.cpp:1:
+/usr/include/c++/11/bits/stl_vector.h:1187:35: note:   initializing argument 1 of ‘void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = Component&; _Alloc = std::allocator<Component&>; std::vector<_Tp, _Alloc>::value_type = Component&]’
+ 1187 |       push_back(const value_type& __x)
+      |                 ~~~~~~~~~~~~~~~~~~^~~
+/usr/include/c++/11/bits/stl_vector.h: In instantiation of ‘std::_Vector_base<_Tp, _Alloc>::~_Vector_base() [with _Tp = Component&; _Alloc = std::allocator<Component&>]’:
+/usr/include/c++/11/bits/stl_vector.h:487:7:   required from here
+/usr/include/c++/11/bits/stl_vector.h:335:31: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_start’
+  335 |         _M_deallocate(_M_impl._M_start,
+      |                       ~~~~~~~~^~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:336:31: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_end_of_storage’
+  336 |                       _M_impl._M_end_of_storage - _M_impl._M_start);
+      |                       ~~~~~~~~^~~~~~~~~~~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:336:59: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_start’
+  336 |                       _M_impl._M_end_of_storage - _M_impl._M_start);
+      |                                                   ~~~~~~~~^~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h: In instantiation of ‘std::vector<_Tp, _Alloc>::~vector() [with _Tp = Component&; _Alloc = std::allocator<Component&>]’:
+./src/system_state.cpp:4:37:   required from here
+/usr/include/c++/11/bits/stl_vector.h:680:37: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_start’
+  680 |         std::_Destroy(this->_M_impl._M_start, this->_M_impl._M_finish,
+      |                       ~~~~~~~~~~~~~~^~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h:680:61: error: ‘struct std::_Vector_base<Component&, std::allocator<Component&> >::_Vector_impl’ has no member named ‘_M_finish’
+  680 |         std::_Destroy(this->_M_impl._M_start, this->_M_impl._M_finish,
+      |                                               ~~~~~~~~~~~~~~^~~~~~~~~
+/usr/include/c++/11/bits/stl_vector.h: In instantiation of ‘std::_Vector_base<_Tp, _Alloc>::_Vector_impl_data::_Vector_impl_data() [with _Tp = Component&; _Alloc = std::allocator<Component&>]’:
+/usr/include/c++/11/bits/stl_vector.h:133:19:   required from ‘std::_Vector_base<_Tp, _Alloc>::_Vector_impl::_Vector_impl() [with _Tp = Component&; _Alloc = std::allocator<Component&>]’
+/usr/include/c++/11/bits/stl_vector.h:288:7:   required from here
+/usr/include/c++/11/bits/stl_vector.h:98:54: error: using invalid field ‘std::_Vector_base<_Tp, _Alloc>::_Vector_impl_data::_M_start’
+   98 |         : _M_start(), _M_finish(), _M_end_of_storage()
+      |                                                      ^
+/usr/include/c++/11/bits/stl_vector.h:98:54: error: using invalid field ‘std::_Vector_base<_Tp, _Alloc>::_Vector_impl_data::_M_finish’
+/usr/include/c++/11/bits/stl_vector.h:98:54: error: using invalid field ‘std::_Vector_base<_Tp, _Alloc>::_Vector_impl_data::_M_end_of_storage’
