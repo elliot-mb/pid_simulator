@@ -5,6 +5,8 @@
 #include "../include/shader.hpp"
 #include "../include/view.hpp"
 #include "../include/utils.hpp"
+#include "../include/presenter.hpp"
+#include "../include/system_state.hpp"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -68,37 +70,43 @@ int main(){
     glfwGetFramebufferSize(window, &width, &height);
     framebuffer_size_callback(window, width, height);
 
-    View view = View();
+    Presenter presenter = Presenter();
+    SystemState systemState = presenter.getSystemState();
+    
+    PointMass pm = PointMass(glm::vec2(0.0f));
+    Beam b = Beam(glm::vec2(0.0f), glm::vec2(1.0f));
+    systemState.addComponent(pm);
+    systemState.addComponent(b);
 
-    cout << view.getSquare() << endl;
+    // cout << view.getSquare() << endl;
 
     while(!glfwWindowShouldClose(window))
     {
-        processInput(window);
-
-        view.startFrame();
+        processInput(window);   
 
         glfwGetFramebufferSize(window, &width, &height);
         float viewportRatio = getViewportRatio(width, height);
 
-        //transformations 
-        mat4 transViewport = glm::scale(mat4(1.0f), glm::vec3(viewportRatio));
-        mat4 trans = glm::translate(transViewport, vec3(0.5f, 0.0f, 0.0f));
-        trans = glm::rotate(trans, (float)glfwGetTime(), vec3(0.0f, 0.0f, 1.0f));
+        presenter.drawView();
 
-        //shape drawing 
-        view.drawShape(view.getSquare(), transViewport, vec4(1.0f, 0.5f, 1.0f, 1.0f));
-        view.drawShape(view.getCircle(), trans, vec4(0.0f, 1.0f, 1.0f, 1.0f));
+        // //transformations 
+        // mat4 transViewport = glm::scale(mat4(1.0f), glm::vec3(viewportRatio));
+        // mat4 trans = glm::translate(transViewport, vec3(0.5f, 0.0f, 0.0f));
+        // trans = glm::rotate(trans, (float)glfwGetTime(), vec3(0.0f, 0.0f, 1.0f));
 
-        //more transformations
-        mat4 transLeft = glm::translate(transViewport, vec3(-1.0f, 0.0f, 0.0f));
-        transLeft = glm::scale(transLeft, vec3(0.5f));
-        transLeft = glm::rotate(transLeft, (float)glfwGetTime() * -2, vec3(0.0f, 0.0f, 1.0f));
+        // //shape drawing 
+        // view.drawShape(view.getSquare(), transViewport, vec4(1.0f, 0.5f, 1.0f, 1.0f));
+        // view.drawShape(view.getCircle(), trans, vec4(0.0f, 1.0f, 1.0f, 1.0f));
 
-        //more shape drawing
-        view.drawShape(view.getCircle(), transLeft, vec4(1.0f, 1.0f, 1.0f, 1.0f));
-        mat4 transLeftSquash = glm::scale(transLeft, vec3(0.1f, 1.0f, 1.0f));
-        view.drawShape(view.getTriangle(), transLeft, view.getSquareColour());
+        // //more transformations
+        // mat4 transLeft = glm::translate(transViewport, vec3(-1.0f, 0.0f, 0.0f));
+        // transLeft = glm::scale(transLeft, vec3(0.5f));
+        // transLeft = glm::rotate(transLeft, (float)glfwGetTime() * -2, vec3(0.0f, 0.0f, 1.0f));
+
+        // //more shape drawing
+        // view.drawShape(view.getCircle(), transLeft, vec4(1.0f, 1.0f, 1.0f, 1.0f));
+        // mat4 transLeftSquash = glm::scale(transLeft, vec3(0.1f, 1.0f, 1.0f));
+        // view.drawShape(view.getTriangle(), transLeft, view.getSquareColour());
 
         glfwSwapBuffers(window);
         glfwPollEvents();    

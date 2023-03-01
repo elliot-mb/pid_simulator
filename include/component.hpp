@@ -5,6 +5,8 @@
 
 #include <glm/glm.hpp>
 
+using namespace std;
+
 //upper-most physical object class
 //interface; does not get instantiated
 class Component

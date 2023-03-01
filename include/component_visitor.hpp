@@ -4,6 +4,11 @@
 #include <glm/glm.hpp>
 #include <vector>
 
+#include "point_mass.hpp"
+#include "beam.hpp"
+
+using namespace std;
+
 class ComponentVisitor //interface
 {
     //visit method for all concrete underlying component classes

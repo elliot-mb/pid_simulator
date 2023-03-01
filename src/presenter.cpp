@@ -1,7 +1,8 @@
 #include "../include/presenter.hpp"
 
 Presenter::Presenter():
-    m_systemState(SystemState())
+    m_systemState(SystemState()),
+    m_view(View())
 {}
 
 //those visitors that will get our transformation matries for the resp. concrete objects
@@ -34,7 +35,9 @@ SystemState& Presenter::getSystemState(){ //not const, we want to perform action
 
 //loop over all shapes in the scene, get their transformations, and draw them to screen using view
 void Presenter::drawView(){
-    vector<Component> components = m_systemState.getComponents();
+    m_view.startFrame();
+
+    vector<Component&> components = m_systemState.getComponents();
 
     for(unsigned int i = 0; i < components.size(); i++){
         Component& c = components[i];
