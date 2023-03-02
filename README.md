@@ -21,11 +21,11 @@ The dependancies of this project include:
 ``chmod 700 out && ./out`` will run the executable.
 
 I'm completing this project on Ubuntu, and as such have not tested its functionality or behaviour on Windows etc.
-``
+```
 ❯ lsb_release -a
 No LSB modules are available.
 Distributor ID:	Ubuntu
 Description:	Ubuntu 22.04.2 LTS
 Release:	22.04
 Codename:	jammy
-``
+```
