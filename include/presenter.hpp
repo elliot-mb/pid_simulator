@@ -9,13 +9,15 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "component_visitor.hpp"
+#include "system_state.hpp"
+#include "view.hpp"
+
 #include <iostream>
 #include <vector>
 
 /*
-This class transforms representations of components as collections of points, or single points and radii, to shapes and matrix transformations.
-
-These shapes and matrix transformations are then used by the view to render shapes
+This class transforms representations of Components to shapes, matrix transformations and colour that View can render.
 
 .: Idea :.
 Use the visitor pattern, creating an interface DrawingVisitor, which Presenter implements, that has a visit method for every concrete subclass of Component;
@@ -28,12 +30,32 @@ Use the visitor pattern, creating an interface DrawingVisitor, which Presenter i
 These visit methods will create the respective transformation matrices for the view drawing pipeline; primitive shape + transformation = proper visual representation
 */
 
-class Presenter {
+class Presenter : public ComponentVisitor {
 public:
 
+    Presenter();
+    ~Presenter();
+
+    //inherited from ComponentVisitor
+    void visitDrawPoint(Component& pointMass);
+    void visitDrawBeam(Component& beam);
+    void visitIndicesPoint(Component& pointMass);
+    void visitIndicesBeam(Component& beam);
+
+    SystemState& getSystemState();
+    View& getView();
+    
+    void drawView(glm::vec3 viewportScale);
+    void clearBuffers();
 
 private:
 
+    SystemState m_systemState;
+    View m_view;
+    //written to then cleared every frame
+    vector<glm::mat4> m_transformBuffer; //contains transformations
+    vector<vector<unsigned int>> m_indexBuffer; //contains shapes (specifically shape vertex indices)
+    vector<glm::vec3> m_colourBuffer; 
 
 };
 

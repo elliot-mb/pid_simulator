@@ -1,6 +1,4 @@
 #include "../include/view.hpp"
-#include "../include/utils.hpp"
-#include "../include/shader.hpp"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>

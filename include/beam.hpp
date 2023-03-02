@@ -1,8 +1,9 @@
 #ifndef BEAM_H
 #define BEAM_H
 
-#include "../include/point_mass.hpp"
-#include "../include/component.hpp"
+#include "component_visitor.hpp"
+#include "point_mass.hpp"
+#include "component.hpp"
 
 #include <glm/glm.hpp>
 
@@ -18,6 +19,8 @@ public:
     // void            setPosB(glm::vec2 pos);
 
     //inherited
+    void acceptDraw(ComponentVisitor& componentVisitor);
+
     const glm::vec2 getPos(); //gets centre
     void            setPos(glm::vec4 pos); //pos.x, pos.y -> posA, pos.z, pos.w -> posB
     const float getMass();

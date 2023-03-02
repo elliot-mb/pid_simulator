@@ -1,0 +1,11 @@
+./src/beam.cpp: In member function ‘virtual const vec2 Beam::getPos()’:
+./src/beam.cpp:27:20: warning: unused variable ‘massA’ [-Wunused-variable]
+   27 |     const float    massA = m_pointA.getMass();
+      |                    ^~~~~
+./src/beam.cpp:28:20: warning: unused variable ‘massB’ [-Wunused-variable]
+   28 |     const float    massB = m_pointB.getMass();
+      |                    ^~~~~
+./src/main.cpp: In function ‘int main()’:
+./src/main.cpp:88:15: warning: unused variable ‘viewportRatio’ [-Wunused-variable]
+   88 |         float viewportRatio = getViewportRatio(width, height);
+      |               ^~~~~~~~~~~~~
