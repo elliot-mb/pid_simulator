@@ -2,9 +2,6 @@
 #define SYSTEM_STATE_H
 
 #include "component.hpp"
-#include "component_visitor.hpp"
-#include "point_mass.hpp"
-#include "beam.hpp"
 
 #include <vector>
 #include <glm/glm.hpp>

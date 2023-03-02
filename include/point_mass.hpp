@@ -3,7 +3,6 @@
 
 #include <glm/glm.hpp>
 #include "component.hpp"
-#include "component_visitor.hpp"
 
 using namespace std;
 

@@ -3,10 +3,8 @@
 #include <math.h>
 
 #include "../include/shader.hpp"
-#include "../include/view.hpp"
 #include "../include/utils.hpp"
 #include "../include/presenter.hpp"
-#include "../include/system_state.hpp"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>

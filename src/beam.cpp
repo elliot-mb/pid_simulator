@@ -1,6 +1,4 @@
 #include "../include/beam.hpp"
-#include "../include/point_mass.hpp"
-#include "../include/component.hpp"
 
 #include <glm/glm.hpp>
 

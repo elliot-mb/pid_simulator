@@ -10,9 +10,6 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include "component_visitor.hpp"
-#include "component.hpp"
-#include "point_mass.hpp"
-#include "beam.hpp"
 #include "system_state.hpp"
 #include "view.hpp"
 

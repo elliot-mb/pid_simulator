@@ -1,5 +1,4 @@
 #include "../include/component.hpp"
-#include "../include/component_visitor.hpp"
 
 #include <glm/glm.hpp>
 
