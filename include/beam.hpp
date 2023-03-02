@@ -1,9 +1,7 @@
 #ifndef BEAM_H
 #define BEAM_H
 
-#include "point_mass.hpp"
 #include "component.hpp"
-#include "component_visitor.hpp"
 
 #include <glm/glm.hpp>
 

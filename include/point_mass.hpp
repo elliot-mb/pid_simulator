@@ -2,6 +2,7 @@
 #define POINT_H
 
 #include <glm/glm.hpp>
+
 #include "component.hpp"
 
 using namespace std;

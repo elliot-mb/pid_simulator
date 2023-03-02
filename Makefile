@@ -3,15 +3,23 @@ INCLUDE_PATH=./include
 SOURCE_PATH=./src
 OBJECT_PATH=./obj
 
-.PHONY: all clean
+files = main presenter shader utils view system_state point_mass beam component component_visitor
 
-all: out 
+$(files) :; @-mkdir $(OBJECT_PATH) 2> log; echo compiling $@; g++ -c $(SOURCE_PATH)/$@.cpp glad.o $(OBJECT_PATH)/*.o -o $(OBJECT_PATH)/$@.o -ldl -lglfw -Wall
 
-clean:
-	rm
+# dependancies
+main: presenter shader utils
+presenter: view system_state point_mass beam
+system_state: component point_mass beam
+point_mass: component component_visitor 
+beam: component component_visitor point_mass 
+component: component_visitor
 
-out: $(INCLUDE_PATH)/%.hpp $(SOURCE_PATH)/%.cpp $(OBJECT_PATH)/%.o glad.o
+.PHONY: clean
+clean:      ; @-rm -r $(OBJECT_PATH)
 
-$(OBJECT_PATH)/%.o: $(SOURCE_PATH)/%.cpp
-	g++ $(FLAGS) -c -o $@ $<
+# out: $(INCLUDE_PATH)/%.hpp $(SOURCE_PATH)/%.cpp $(OBJECT_PATH)/%.o glad.o
+
+# $(OBJECT_PATH)/%.o: $(SOURCE_PATH)/%.cpp
+# 	g++ $(FLAGS) -c -o $@ $<
 
