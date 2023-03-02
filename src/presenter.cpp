@@ -2,53 +2,68 @@
 
 Presenter::Presenter():
     m_systemState(SystemState()),
-    m_view(View())
+    m_view(View()),
+    m_transformBuffer(vector<glm::mat4>{}),
+    m_indexBuffer(vector<vector<unsigned int>>{}),
+    m_colourBuffer(vector<glm::vec3>{})
 {}
 
-//those visitors that will get our transformation matries for the resp. concrete objects
-vector<glm::mat4>& Presenter::visitDraw(PointMass& pointMass){
-    vector<glm::mat4> res; 
-    res.push_back(glm::mat4(1.0f));
-    return res;
-}
-vector<glm::mat4>& Presenter::visitDraw(Beam& beam){
-    vector<glm::mat4> res; 
-    res.push_back(glm::mat4(1.0f));
-    return res;
+Presenter::~Presenter(){
+
 }
 
-//those visitors that will get our vertex sets/shapes for the resp. concrete objects
-const vector<vector<unsigned int>>& Presenter::visitIndices(PointMass& pointMass){
-    vector<vector<unsigned int>> res; 
-    res.push_back(m_view.getCircle());
-    return res;
+//those visitors that get the information we need in our buffers
+void Presenter::visitDrawPoint(Component& pointMass){
+
+    m_transformBuffer.push_back(glm::scale(glm::mat4(1.0f), glm::vec3(0.5f, 0.5f, 1.0f)));
+    m_indexBuffer.push_back(m_view.getCircle());
+    m_colourBuffer.push_back(glm::vec3(1.0f, 1.0f, 1.0f));
 }
-const vector<vector<unsigned int>>& Presenter::visitIndices(Beam& beam){
-    vector<vector<unsigned int>> res; 
-    res.push_back(m_view.getSquare());
-    return res;
+void Presenter::visitDrawBeam(Component& beam){
+
+    m_transformBuffer.push_back(glm::mat4(1.0f));
+    m_indexBuffer.push_back(m_view.getSquare());
+    m_colourBuffer.push_back(glm::vec3(0.0f, 0.0f, 0.0f));
 }
 
 SystemState& Presenter::getSystemState(){ //not const, we want to perform actions on this once returned
     return m_systemState; 
 }
 
+View& Presenter::getView(){
+    return m_view;
+}
+
+void Presenter::clearBuffers(){
+    m_transformBuffer.clear();
+    m_indexBuffer.clear();
+    m_colourBuffer.clear();
+}
+
 //loop over all shapes in the scene, get their transformations, and draw them to screen using view
-void Presenter::drawView(){
+void Presenter::drawView(glm::vec3 viewportScale){
     m_view.startFrame();
 
-    vector<Component&> components = m_systemState.getComponents();
+    //fill out presenter buffers before rendering 
+    for(unsigned int i = 0; i < m_systemState.getComponents().size(); i++){
+        Component* c = m_systemState.getComponents().at(i);
+        
+        (*c).acceptDraw(*this); //update our current buffers in a specific way (visitor gets underlying type)
 
-    for(unsigned int i = 0; i < components.size(); i++){
-        Component& c = components[i];
-        //as a visitor we gather data on our underlying components
-        vector<glm::mat4> transforms = c.acceptDraw(*this);
-        vector<vector<unsigned int>> shapes = c.acceptIndices(*this);
-
-        assert(transforms.size() == shapes.size()); //1:1 transform:shape
-
-        for(unsigned int j = 0; j < transforms.size(); j++){
-            m_view.drawShape(shapes[j], transforms[j], glm::vec4(1.0f, 0.0f, 1.0f, 1.0f)); 
-        }
+        assert(m_transformBuffer.size() == m_colourBuffer.size()); //one transformation for every colour
+        assert(m_transformBuffer.size() == m_indexBuffer.size()); //one transformation for every shape
+        //=> one colour for every shape
     }
+
+    //draw all the shapes to screen for every component
+    for(unsigned int j = 0; j < m_transformBuffer.size(); j++){
+        glm::mat4 transViewportScale = glm::scale(m_transformBuffer.at(j), viewportScale);
+        m_view.drawShape(
+            m_indexBuffer.at(j), //the component sub/shape
+            transViewportScale, //transformation for the sub/shape
+            glm::vec4(m_colourBuffer.at(j), 1.0f) //colour for the sub/shape
+        ); 
+    }
+
+    clearBuffers();
 }

@@ -2,6 +2,8 @@
 #define SYSTEM_STATE_H
 
 #include "component.hpp"
+#include "point_mass.hpp"
+#include "beam.hpp"
 
 #include <vector>
 #include <glm/glm.hpp>
@@ -15,11 +17,11 @@ public:
 
     void addComponent(PointMass& pointMass);
     void addComponent(Beam& beam);
-    const vector<Component&>& getComponents(); //gets the reference to our components vector
+    const vector<Component*>& getComponents(); //gets the reference to our components vector
 
 private:
     
-    vector<Component&> m_components;
+    vector<Component*> m_components;
 
 };
 

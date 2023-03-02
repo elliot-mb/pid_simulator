@@ -5,19 +5,17 @@
 
 using namespace std;
 
-PointMass::PointMass(glm::vec2 pos, float mass=1.0f):
+PointMass::PointMass():m_pos(glm::vec2(0.0f, 0.0f)), m_mass(1.0f){}
+
+PointMass::PointMass(glm::vec2 pos, float mass):
     m_mass(mass) //set const
 {
     assert(mass >= 0.0f);
     m_pos = pos;
 }
 
-vector<glm::mat4>& PointMass::acceptDraw(ComponentVisitor& componentVisitor){
-    return componentVisitor.visitDraw(*this);
-}
-
-const vector<vector<unsigned int>>& PointMass::acceptIndices(ComponentVisitor& componentVisitor){
-    return componentVisitor.visitIndices(*this);
+void PointMass::acceptDraw(ComponentVisitor& componentVisitor){
+    componentVisitor.visitDrawPoint(*this);
 }
 
 const glm::vec2 PointMass::getPos(){

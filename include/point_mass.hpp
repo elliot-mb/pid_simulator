@@ -3,6 +3,7 @@
 
 #include <glm/glm.hpp>
 
+#include "component_visitor.hpp"
 #include "component.hpp"
 
 using namespace std;
@@ -10,12 +11,12 @@ using namespace std;
 class PointMass: public Component 
 {
 public:
+    PointMass();
     //throws exception if mass is negative
     PointMass(glm::vec2 pos, float mass=1.0f);
 
     //inherited
-    vector<glm::mat4>& acceptDraw(ComponentVisitor& componentVisitor);
-    const vector<vector<unsigned int>>& acceptIndices(ComponentVisitor& componentVisitor);
+    void acceptDraw(ComponentVisitor& componentVisitor);
 
     const glm::vec2 getPos();
     void            setPos(glm::vec4 pos);

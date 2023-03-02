@@ -17,9 +17,7 @@
 #include <vector>
 
 /*
-This class transforms representations of components as collections of points, or single points and radii, to shapes and matrix transformations.
-
-These shapes and matrix transformations are then used by the view to render shapes
+This class transforms representations of Components to shapes, matrix transformations and colour that View can render.
 
 .: Idea :.
 Use the visitor pattern, creating an interface DrawingVisitor, which Presenter implements, that has a visit method for every concrete subclass of Component;
@@ -36,21 +34,28 @@ class Presenter : public ComponentVisitor {
 public:
 
     Presenter();
+    ~Presenter();
 
     //inherited from ComponentVisitor
-    vector<glm::mat4>& visitDraw(PointMass& pointMass);
-    vector<glm::mat4>& visitDraw(Beam& beam);
-    const vector<vector<unsigned int>>& visitIndices(PointMass& pointMass);
-    const vector<vector<unsigned int>>& visitIndices(Beam& beam);
+    void visitDrawPoint(Component& pointMass);
+    void visitDrawBeam(Component& beam);
+    void visitIndicesPoint(Component& pointMass);
+    void visitIndicesBeam(Component& beam);
 
     SystemState& getSystemState();
+    View& getView();
     
-    void drawView();
+    void drawView(glm::vec3 viewportScale);
+    void clearBuffers();
 
 private:
 
     SystemState m_systemState;
     View m_view;
+    //written to then cleared every frame
+    vector<glm::mat4> m_transformBuffer; //contains transformations
+    vector<vector<unsigned int>> m_indexBuffer; //contains shapes (specifically shape vertex indices)
+    vector<glm::vec3> m_colourBuffer; 
 
 };
 

@@ -4,12 +4,10 @@
 
 using namespace std;
 
-Beam::Beam(glm::vec2 posA, glm::vec2 posB, float mass=1.0f):
-    m_pointA(PointMass(posA, (float)mass/2)),
-    m_pointB(PointMass(posB, (float)mass/2)),
-    m_length(glm::distance(posA, posB))
+Beam::Beam(glm::vec2 posA, glm::vec2 posB, float mass):m_length(glm::distance(posA, posB))
 {
-    //uniform beam
+    PointMass m_pointA(posA, (float)mass/2);
+    PointMass m_pointB(posB, (float)mass/2);
 }
 
 const glm::vec2 Beam::getPosA(){
@@ -19,12 +17,8 @@ const glm::vec2 Beam::getPosB(){
     return m_pointB.getPos();
 }
 
-vector<glm::mat4>& Beam::acceptDraw(ComponentVisitor& componentVisitor){
-        return componentVisitor.visitDraw(*this);
-}
-
-const vector<vector<unsigned int>>& Beam::acceptIndices(ComponentVisitor& componentVisitor){
-    return componentVisitor.visitIndices(*this);
+void Beam::acceptDraw(ComponentVisitor& componentVisitor){
+    componentVisitor.visitDrawBeam(*this);
 }
 
 const glm::vec2 Beam::getPos(){

@@ -5,6 +5,8 @@
 #include "../include/shader.hpp"
 #include "../include/utils.hpp"
 #include "../include/presenter.hpp"
+#include "../include/beam.hpp"
+#include "../include/point_mass.hpp"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -69,12 +71,13 @@ int main(){
     framebuffer_size_callback(window, width, height);
 
     Presenter presenter = Presenter();
-    SystemState systemState = presenter.getSystemState();
+    SystemState* systemState = &(presenter.getSystemState());
+    View view = presenter.getView();
     
     PointMass pm = PointMass(glm::vec2(0.0f));
     Beam b = Beam(glm::vec2(0.0f), glm::vec2(1.0f));
-    systemState.addComponent(pm);
-    systemState.addComponent(b);
+    systemState->addComponent(b);
+    systemState->addComponent(pm);
 
     // cout << view.getSquare() << endl;
 
@@ -85,7 +88,8 @@ int main(){
         glfwGetFramebufferSize(window, &width, &height);
         float viewportRatio = getViewportRatio(width, height);
 
-        presenter.drawView();
+        presenter.drawView(glm::vec3(viewportRatio, viewportRatio, 1.0f));
+        //view.startFrame();
 
         // //transformations 
         // mat4 transViewport = glm::scale(mat4(1.0f), glm::vec3(viewportRatio));
