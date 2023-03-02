@@ -19,23 +19,25 @@
 
 using namespace std;
 
+void processInput(GLFWwindow *window)
+{
+    if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, true);
+}
+
 float getViewportRatio(unsigned int width, unsigned int height){
     return width > height ? (float)height / width : (float)width / height;
 }
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height){
+void framebuffer_resize_callback(GLFWwindow* window, int width, int height){
     float viewportRatio = getViewportRatio(width, height);
+
     unsigned int maxDimension = std::max(width, height);
     unsigned int xOffset = (unsigned int) round(((1 - viewportRatio) / -2) * height);
     unsigned int yOffset = (unsigned int) round(((1 - viewportRatio) / -2) * width);
     glViewport(height > width ? xOffset : 0, width > height ? yOffset : 0, maxDimension, maxDimension);
 }
 
-void processInput(GLFWwindow *window)
-{
-    if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, true);
-}
 
 int main(){
 
@@ -44,7 +46,7 @@ int main(){
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3); //3.3 is the version we will use
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    GLFWwindow* window = glfwCreateWindow(900, 600, "LearnOpenGL", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(900, 600, "physics_sim", NULL, NULL);
     if (window == NULL)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
@@ -63,21 +65,22 @@ int main(){
     //tell opengl the size of the rendering window
     glViewport(0, 0, 900, 600); //lower left corner, width, height
 
-    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);  
-
-
-    int width, height;
-    glfwGetFramebufferSize(window, &width, &height);
-    framebuffer_size_callback(window, width, height);
+    glfwSetFramebufferSizeCallback(window, framebuffer_resize_callback);  
 
     Presenter presenter = Presenter();
     SystemState* systemState = &(presenter.getSystemState());
     View view = presenter.getView();
+
+    int width, height;
+    glfwGetFramebufferSize(window, &width, &height);
+    framebuffer_resize_callback(window, width, height);
     
-    PointMass pm = PointMass(glm::vec2(0.0f));
-    Beam b = Beam(glm::vec2(0.0f), glm::vec2(1.0f));
+    PointMass pm = PointMass(glm::vec2(0.5f));
+    Beam b = Beam(glm::vec2(0.0f), glm::vec2(1.0f, 1.0f), 1.0f);
+    //b.setPos(vec4(0.0f, 0.0f, 0.5f, 0.5f));
     systemState->addComponent(b);
-    systemState->addComponent(pm);
+    //systemState->addComponent(pm);
+
 
     // cout << view.getSquare() << endl;
 
@@ -86,9 +89,9 @@ int main(){
         processInput(window);   
 
         glfwGetFramebufferSize(window, &width, &height);
-        float viewportRatio = getViewportRatio(width, height);
 
-        presenter.drawView(glm::vec3(viewportRatio, viewportRatio, 1.0f));
+        presenter.setViewportTransform(getViewportRatio(width, height));
+        presenter.drawView();
         //view.startFrame();
 
         // //transformations 

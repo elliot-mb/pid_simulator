@@ -14,9 +14,9 @@ public:
     Beam(glm::vec2 posA, glm::vec2 posB, float mass=1.0f);
     
     const glm::vec2 getPosA(); 
-    // void            setPosA(glm::vec2 pos);
     const glm::vec2 getPosB(); 
-    // void            setPosB(glm::vec2 pos);
+    // PointMass& getPointA();
+    // PointMass& getPointB();
 
     //inherited
     void acceptDraw(ComponentVisitor& componentVisitor);

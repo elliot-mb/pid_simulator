@@ -44,19 +44,23 @@ public:
 
     SystemState& getSystemState();
     View& getView();
-    
-    void drawView(glm::vec3 viewportScale);
+
+    void setViewportTransform(float viewportRatio);
+
+    void drawView();
     void clearBuffers();
 
 private:
 
     SystemState m_systemState;
     View m_view;
+
     //written to then cleared every frame
     vector<glm::mat4> m_transformBuffer; //contains transformations
     vector<vector<unsigned int>> m_indexBuffer; //contains shapes (specifically shape vertex indices)
     vector<glm::vec3> m_colourBuffer; 
 
+    glm::mat4 m_viewportTransform;
 };
 
 #endif

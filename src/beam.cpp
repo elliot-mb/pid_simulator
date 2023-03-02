@@ -4,11 +4,11 @@
 
 using namespace std;
 
-Beam::Beam(glm::vec2 posA, glm::vec2 posB, float mass):m_length(glm::distance(posA, posB))
-{
-    PointMass m_pointA(posA, (float)mass/2);
-    PointMass m_pointB(posB, (float)mass/2);
-}
+Beam::Beam(glm::vec2 posA, glm::vec2 posB, float mass):
+    m_length(glm::distance(posA, posB)),
+    m_pointA(PointMass(posA, mass/2)),
+    m_pointB(PointMass(posB, mass/2))
+{}
 
 const glm::vec2 Beam::getPosA(){
     return m_pointA.getPos();
@@ -17,8 +17,18 @@ const glm::vec2 Beam::getPosB(){
     return m_pointB.getPos();
 }
 
+// PointMass& Beam::getPointA(){
+//     return m_pointA;
+// }
+
+// PointMass& Beam::getPointB(){
+//     return m_pointB;
+// }
+
 void Beam::acceptDraw(ComponentVisitor& componentVisitor){
     componentVisitor.visitDrawBeam(*this);
+    componentVisitor.visitDrawPoint(m_pointA); //all subcomponents calls can be completed through visitation
+    componentVisitor.visitDrawPoint(m_pointB);
 }
 
 const glm::vec2 Beam::getPos(){

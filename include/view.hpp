@@ -34,24 +34,27 @@ public:
     const vector<unsigned int>& getSquare();
     const vector<unsigned int>& getCircle();
     const vector<unsigned int>& getTriangle();
+
     const vector<float>&        getVertices();
     const unsigned int          getVAO();
     const vec4                  getCircleColour();
     const vec4                  getSquareColour();
 
+
 private:
+
     void m_generateCircle(unsigned int sides, vector<float> &vertices, vector<unsigned int> &indices);
 
     vector<float> m_vertices = {
         //triangle (equalteral, centered on origin)
-        -0.86603, -0.5, 0.0,
-         0.86603, -0.5, 0.0,
-         0.0,      1.0, 0.0,
-        //square
-        -1.0, -1.0, 0.0, 
-         1.0, -1.0, 0.0,
-         1.0,  1.0, 0.0,
-        -1.0,  1.0, 0.0
+        -0.43301, -0.25, 0.0,
+         0.43301, -0.25, 0.0,
+         0.0,      0.5, 0.0,
+        //unit square
+        -0.5, -0.5, 0.0, 
+         0.5, -0.5, 0.0,
+         0.5,  0.5, 0.0,
+        -0.5,  0.5, 0.0
     };
     //all our shapes (index into vertices)
     const vector<unsigned int> m_TRIANGLE_INDICES = {
