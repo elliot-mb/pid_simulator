@@ -21,20 +21,20 @@ void Presenter::visitDrawPoint(Component& pointMass){
 
     m_transformBuffer.push_back(trans);
     m_indexBuffer.push_back(m_view.getCircle());
-    m_colourBuffer.push_back(glm::vec3(1.0f, 1.0f, 1.0f));
+    m_colourBuffer.push_back(glm::vec3(1.0f, 0.5f, 0.5f));
 }
 void Presenter::visitDrawBeam(Component& beam){
 
     Beam* b = dynamic_cast<Beam*>(&beam);
     vec2 direction = b->getPosA() - b->getPosB();
-    cout << b->getPosA().x << b->getPosA().y << b->getPosB().x << b->getPosB().y << endl;
+    float distance = glm::length(direction);
+
     float theta;
     if(direction.x == 0.0f){
         theta = glm::half_pi<float>();
     }else{
         theta = glm::atan((float) direction.y / direction.x);
     }
-    float distance = glm::length(direction);
 
     glm::mat4 trans = m_viewportTransform;
     trans = glm::translate(trans, glm::vec3(beam.getPos(), 1.0f));
@@ -43,7 +43,7 @@ void Presenter::visitDrawBeam(Component& beam){
 
     m_transformBuffer.push_back(trans);
     m_indexBuffer.push_back(m_view.getSquare());
-    m_colourBuffer.push_back(glm::vec3(0.0f, 0.0f, 0.0f));
+    m_colourBuffer.push_back(glm::vec3(0.5f, 0.5f, 0.5f));
 }
 
 SystemState& Presenter::getSystemState(){ //not const, we want to perform actions on this once returned

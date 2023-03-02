@@ -8,7 +8,7 @@ files = main presenter shader utils view system_state point_mass beam component 
 $(files) :; @-mkdir $(OBJECT_PATH) 2> /dev/null; echo compiling $@; g++ -c $(SOURCE_PATH)/$@.cpp -o $(OBJECT_PATH)/$@.o -ldl -lglfw -Wall
 
 out: $(files)
-	g++ glad.c $(OBJECT_PATH)/*.o -o out -ldl -lglfw -Wall 
+	g++ glad.c $(OBJECT_PATH)/*.o -o out -ldl -lglfw -Wall -O3
 	
 
 # dependancies

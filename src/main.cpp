@@ -88,30 +88,14 @@ int main(){
     {
         processInput(window);   
 
+        float timestamp = (float)glfwGetTime();
+
         glfwGetFramebufferSize(window, &width, &height);
 
         presenter.setViewportTransform(getViewportRatio(width, height));
         presenter.drawView();
-        //view.startFrame();
-
-        // //transformations 
-        // mat4 transViewport = glm::scale(mat4(1.0f), glm::vec3(viewportRatio));
-        // mat4 trans = glm::translate(transViewport, vec3(0.5f, 0.0f, 0.0f));
-        // trans = glm::rotate(trans, (float)glfwGetTime(), vec3(0.0f, 0.0f, 1.0f));
-
-        // //shape drawing 
-        // view.drawShape(view.getSquare(), transViewport, vec4(1.0f, 0.5f, 1.0f, 1.0f));
-        // view.drawShape(view.getCircle(), trans, vec4(0.0f, 1.0f, 1.0f, 1.0f));
-
-        // //more transformations
-        // mat4 transLeft = glm::translate(transViewport, vec3(-1.0f, 0.0f, 0.0f));
-        // transLeft = glm::scale(transLeft, vec3(0.5f));
-        // transLeft = glm::rotate(transLeft, (float)glfwGetTime() * -2, vec3(0.0f, 0.0f, 1.0f));
-
-        // //more shape drawing
-        // view.drawShape(view.getCircle(), transLeft, vec4(1.0f, 1.0f, 1.0f, 1.0f));
-        // mat4 transLeftSquash = glm::scale(transLeft, vec3(0.1f, 1.0f, 1.0f));
-        // view.drawShape(view.getTriangle(), transLeft, view.getSquareColour());
+        
+        b.setPos(vec4(cos(timestamp), sin(timestamp), -sin(1.9 * timestamp), 0.0f));
 
         glfwSwapBuffers(window);
         glfwPollEvents();    
