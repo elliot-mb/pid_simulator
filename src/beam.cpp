@@ -4,6 +4,18 @@
 
 using namespace std;
 
+Beam::Beam():
+    m_length(0),
+    m_pointA(PointMass(glm::vec2(0.0f), 0.5f)),
+    m_pointB(PointMass(glm::vec2(0.0f), 0.5f))
+{}
+
+Beam::Beam(glm::vec2 posA, glm::vec2 posB):
+    m_length(glm::distance(posA, posB)),
+    m_pointA(PointMass(posA, 0.5f)),
+    m_pointB(PointMass(posB, 0.5f))
+{}
+
 Beam::Beam(glm::vec2 posA, glm::vec2 posB, float mass):
     m_length(glm::distance(posA, posB)),
     m_pointA(PointMass(posA, mass/2)),

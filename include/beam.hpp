@@ -11,7 +11,9 @@ class Beam : public Component
 {
 public:
     //set positions, work out length, work out mass
-    Beam(glm::vec2 posA, glm::vec2 posB, float mass=1.0f);
+    Beam();
+    Beam(glm::vec2 posA, glm::vec2 posB);
+    Beam(glm::vec2 posA, glm::vec2 posB, float mass);
     
     const glm::vec2 getPosA(); 
     const glm::vec2 getPosB(); 
