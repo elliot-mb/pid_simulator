@@ -39,8 +39,6 @@ public:
     //inherited from ComponentVisitor
     void visitDrawPoint(Component& pointMass);
     void visitDrawBeam(Component& beam);
-    void visitIndicesPoint(Component& pointMass);
-    void visitIndicesBeam(Component& beam);
 
     SystemState& getSystemState();
     View& getView();

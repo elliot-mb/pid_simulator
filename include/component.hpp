@@ -22,6 +22,7 @@ public:
     virtual void            setPos(glm::vec4 pos) = 0; 
 
     virtual const float getMass() = 0;
+
 };
 
 #endif
