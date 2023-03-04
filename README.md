@@ -1,6 +1,6 @@
 # PID Simulator
 
-Aim to create basic 2D constraint-based physics rendered using OpenGL, with the eventual goal of being able to simulate closed-loop control systems like PID controllers.
+Aim to create basic 2D component-based physics with constraints, rendered using OpenGL, with the eventual goal of being able to simulate closed-loop control systems like PID controllers.
 
 This project is my first in c++, and was inspired at least in part by [Ange-the-great](https://github.com/ange-yaghi/scs-2d-demo) as seen on YouTube, famous for his c++-based Engine Simulator. 
 
