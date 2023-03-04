@@ -14,7 +14,7 @@ Presenter::~Presenter(){
 }
 
 //those visitors that get the information we need in our buffers
-void Presenter::visitDrawPoint(Component& pointMass){
+void Presenter::visit(PointMass& pointMass){
 
     glm::mat4 trans = glm::translate(m_viewportTransform, glm::vec3(pointMass.getPos(), 0.0f));
     trans = glm::scale(trans, glm::vec3(0.1f, 0.1f, 1.0f));
@@ -23,7 +23,7 @@ void Presenter::visitDrawPoint(Component& pointMass){
     m_indexBuffer.push_back(m_view.getCircle());
     m_colourBuffer.push_back(glm::vec3(1.0f, 0.5f, 0.5f));
 }
-void Presenter::visitDrawBeam(Component& beam){
+void Presenter::visit(Beam& beam){
 
     Beam* b = dynamic_cast<Beam*>(&beam);
     vec2 direction = b->getPosA() - b->getPosB();
@@ -68,7 +68,7 @@ void Presenter::drawView(){
     for(unsigned int i = 0; i < m_systemState.getComponents().size(); i++){
         Component* c = m_systemState.getComponents().at(i);
         
-        (*c).acceptDraw(*this); //update our current buffers in a specific way (visitor gets underlying type)
+        (*c).accept(*this); //update our current buffers in a specific way (visitor gets underlying type)
 
         assert(m_transformBuffer.size() == m_colourBuffer.size()); //one transformation for every colour
         assert(m_transformBuffer.size() == m_indexBuffer.size()); //one transformation for every shape

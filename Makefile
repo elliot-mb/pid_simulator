@@ -3,7 +3,7 @@ INCLUDE_PATH=./include
 SOURCE_PATH=./src
 OBJECT_PATH=./obj
 
-files = main presenter shader utils view system_state point_mass beam component component_visitor
+files = main presenter shader utils view system_state point_mass beam component drawing_visitor
 
 $(files) :; @-mkdir $(OBJECT_PATH) 2> /dev/null; echo compiling $@; g++ -c $(SOURCE_PATH)/$@.cpp -o $(OBJECT_PATH)/$@.o -ldl -lglfw -Wall -pedantic
 
@@ -15,9 +15,9 @@ out: $(files)
 main: presenter shader utils
 presenter: view system_state point_mass beam
 system_state: component point_mass beam
-point_mass: component component_visitor 
-beam: component component_visitor point_mass 
-component_visitor: component
+point_mass: component drawing_visitor 
+beam: component drawing_visitor point_mass 
+drawing_visitor: component
 
 .PHONY: clean
 clean:      ; @-rm -r $(OBJECT_PATH); rm ./out

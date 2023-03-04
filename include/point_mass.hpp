@@ -3,7 +3,7 @@
 
 #include <glm/glm.hpp>
 
-#include "component_visitor.hpp"
+#include "drawing_visitor.hpp"
 #include "component.hpp"
 
 using namespace std;
@@ -16,7 +16,7 @@ public:
     PointMass(glm::vec2 pos, float mass=1.0f);
 
     //inherited
-    void acceptDraw(ComponentVisitor& componentVisitor);
+    void accept(DrawingVisitor& visitor);
 
     const glm::vec2 getPos();
     void            setPos(glm::vec4 pos);

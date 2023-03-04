@@ -4,19 +4,18 @@
 #include <glm/glm.hpp>
 #include <vector>
 
-// #include "component.hpp"
-
 using namespace std;
 
-class Component;
+class PointMass;
+class Beam;
 
-class ComponentVisitor //interface
+class DrawingVisitor //interface
 {
     //visit method for all concrete underlying component classes
 public:
     //modify the state of the caller (adds transformations)
-    virtual void visitDrawPoint(Component& pointMass) = 0;
-    virtual void visitDrawBeam(Component& beam) = 0;
+    virtual void visit(PointMass& pointMass) = 0;
+    virtual void visit(Beam& beam) = 0;
 
 };
 
