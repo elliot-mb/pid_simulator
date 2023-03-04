@@ -9,7 +9,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "component_visitor.hpp"
+#include "drawing_visitor.hpp"
 #include "system_state.hpp"
 #include "view.hpp"
 
@@ -30,15 +30,15 @@ Use the visitor pattern, creating an interface DrawingVisitor, which Presenter i
 These visit methods will create the respective transformation matrices for the view drawing pipeline; primitive shape + transformation = proper visual representation
 */
 
-class Presenter : public ComponentVisitor {
+class Presenter : public DrawingVisitor {
 public:
 
     Presenter();
     ~Presenter();
 
-    //inherited from ComponentVisitor
-    void visitDrawPoint(Component& pointMass);
-    void visitDrawBeam(Component& beam);
+    //inherited from DrawingVisitor
+    void visit(PointMass& pointMass);
+    void visit(Beam& beam);
 
     SystemState& getSystemState();
     View& getView();

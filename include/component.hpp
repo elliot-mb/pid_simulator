@@ -4,7 +4,7 @@
 #include <glm/glm.hpp>
 #include <vector>
 
-#include "component_visitor.hpp"
+#include "drawing_visitor.hpp"
 
 using namespace std;
 
@@ -16,12 +16,13 @@ public:
     virtual ~Component() {}
 
     //visitor pattern
-    virtual void acceptDraw(ComponentVisitor& componentVisitor) = 0;
+    virtual void accept(DrawingVisitor& visitor) = 0;
 
     virtual const glm::vec2 getPos() = 0;
     virtual void            setPos(glm::vec4 pos) = 0; 
 
     virtual const float getMass() = 0;
+
 
 };
 

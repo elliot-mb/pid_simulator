@@ -37,10 +37,10 @@ const glm::vec2 Beam::getPosB(){
 //     return m_pointB;
 // }
 
-void Beam::acceptDraw(ComponentVisitor& componentVisitor){
-    componentVisitor.visitDrawBeam(*this);
-    componentVisitor.visitDrawPoint(m_pointA); //all subcomponents calls can be completed through visitation
-    componentVisitor.visitDrawPoint(m_pointB);
+void Beam::accept(DrawingVisitor& visitor){
+    visitor.visit(*this);
+    visitor.visit(m_pointA); //all subcomponents calls can be completed through visitation
+    visitor.visit(m_pointB);
 }
 
 const glm::vec2 Beam::getPos(){

@@ -14,8 +14,8 @@ PointMass::PointMass(glm::vec2 pos, float mass):
     m_pos = pos;
 }
 
-void PointMass::acceptDraw(ComponentVisitor& componentVisitor){
-    componentVisitor.visitDrawPoint(*this);
+void PointMass::accept(DrawingVisitor& visitor){
+    visitor.visit(*this);
 }
 
 const glm::vec2 PointMass::getPos(){
