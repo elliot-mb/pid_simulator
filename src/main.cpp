@@ -6,6 +6,7 @@
 #include "../include/utils.hpp"
 #include "../include/presenter.hpp"
 #include "../include/beam.hpp"
+#include "../include/spring.hpp"
 #include "../include/point_mass.hpp"
 
 #include <glm/glm.hpp>
@@ -75,20 +76,9 @@ int main(){
     glfwGetFramebufferSize(window, &width, &height);
     framebuffer_resize_callback(window, width, height);
     
-    //Beam beams[12];
-
-    PointMass pm = PointMass(glm::vec2(0.5f));
-    for(unsigned int i = 0; i < 12; i++){
-        float t1 = glm::pi<float>() * i/6;
-        float t2 = glm::pi<float>() * (i + 1)/6;
-        systemState->addComponent(*(new Beam(vec2(cos(t1), sin(t1)), vec2(cos(t2), sin(t2)))));
-    }
-    //b.setPos(vec4(0.0f, 0.0f, 0.5f, 0.5f));
-    Beam b = Beam(glm::vec2(0.0f), glm::vec2(1.0f, 1.0f), 1.0f);
-    systemState->addComponent(b);
-    //systemState->addComponent(pm);
-
-    // cout << view.getSquare() << endl;
+    systemState->addComponent(*(new Spring(vec2(0.5f, 0.5f), vec2(0.8f, 0.4f), 1.0f, 1.0f)));
+    systemState->addComponent(*(new Slider(vec2(-0.5f, 0.1f), vec2(-0.8f, 0.4f), 1.0f)));
+    systemState->addComponent(*(new Beam(vec2(0.5f, -0.1f), vec2(0.8f, -0.4f), 1.0f)));
 
     while(!glfwWindowShouldClose(window))
     {
@@ -101,8 +91,6 @@ int main(){
         presenter.setViewportTransform(getViewportRatio(width, height));
         presenter.drawView();
         
-        b.setPos(vec4(cos(timestamp), sin(timestamp), -sin(1.9 * timestamp), 0.0f));
-
         glfwSwapBuffers(window);
         glfwPollEvents();    
     }

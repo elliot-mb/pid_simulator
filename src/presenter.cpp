@@ -26,22 +26,62 @@ void Presenter::visit(PointMass& pointMass){
 void Presenter::visit(Beam& beam){
 
     glm::mat4 trans = m_viewportTransform;
-    trans = glm::translate(trans, glm::vec3(beam.getPos(), 1.0f));
-    m_connect(trans, beam.getPosA(), beam.getPosB(), 0.1f);
+    m_connect(trans, beam.getPosA(), beam.getPosB(), beam.getPos(), 0.1f);
 
     m_transformBuffer.push_back(trans);
     m_indexBuffer.push_back(m_view.getSquare());
-    m_colourBuffer.push_back(glm::vec3(0.5f, 0.5f, 0.5f));
+    m_colourBuffer.push_back(glm::vec3(0.5f, 1.0f, 1.0f));
+}
+void Presenter::visit(Slider& slider){
+
+    glm::mat4 trans = m_viewportTransform;
+    m_connect(trans, slider.getPosA(), slider.getPosB(), slider.getPos(), 0.02f);
+    trans = glm::translate(trans, glm::vec3(0.0f, 2.0f, 0.0f));
+
+    m_transformBuffer.push_back(trans);
+    m_indexBuffer.push_back(m_view.getSquare());
+    m_colourBuffer.push_back(glm::vec3(0.0f, 0.5f, 1.0f));
+
+    trans = m_viewportTransform;
+    m_connect(trans, slider.getPosA(), slider.getPosB(), slider.getPos(), 0.02f);
+    trans = glm::translate(trans, glm::vec3(0.0f, -2.0f, 0.0f));
+
+    m_transformBuffer.push_back(trans);
+    m_indexBuffer.push_back(m_view.getSquare());
+    m_colourBuffer.push_back(glm::vec3(0.0f, 0.5f, 1.0f));
 }
 void Presenter::visit(Spring& spring){
 
+    //triangle 1
     glm::mat4 trans = m_viewportTransform;
-    trans = glm::translate(trans, glm::vec3(spring.getPos(), 1.0f));
-    m_connect(trans, spring.getPosA(), spring.getPosB(), 0.1f);
+    m_connect(trans, spring.getPosA(), spring.getPosB(), spring.getPos(), 0.1f);
+    trans = glm::rotate(trans, glm::radians<float>(90), glm::vec3(0.0f, 0.0f, 1.0f));
+    trans = glm::translate(trans, glm::vec3(0.0f, 0.25f, 0.0f));
+    trans = glm::scale(trans, glm::vec3(1.0f, 0.5f, 1.0f));
+
+    m_transformBuffer.push_back(trans);
+    m_indexBuffer.push_back(m_view.getTriangle());
+    m_colourBuffer.push_back(glm::vec3(0.0f, 1.0f, 0.5f));
+
+    //triangle 2
+    trans = m_viewportTransform;
+    m_connect(trans, spring.getPosA(), spring.getPosB(), spring.getPos(), 0.1f);
+    trans = glm::rotate(trans, glm::radians<float>(270), glm::vec3(0.0f, 0.0f, 1.0f));
+    trans = glm::translate(trans, glm::vec3(0.0f, 0.25f, 0.0f));
+    trans = glm::scale(trans, glm::vec3(1.0f, 0.5f, 1.0f));
+
+    m_transformBuffer.push_back(trans);
+    m_indexBuffer.push_back(m_view.getTriangle());
+    m_colourBuffer.push_back(glm::vec3(0.0f, 1.0f, 0.5f));
+
+    //rect 
+    trans = m_viewportTransform;
+    m_connect(trans, spring.getPosA(), spring.getPosB(), spring.getPos(), 0.05f);
+    trans = glm::scale(trans, glm::vec3(1.0f, 0.5f, 1.0f));
 
     m_transformBuffer.push_back(trans);
     m_indexBuffer.push_back(m_view.getSquare());
-    m_colourBuffer.push_back(glm::vec3(0.5f, 1.0f, 0.5f));
+    m_colourBuffer.push_back(glm::vec3(0.0f, 1.0f, 0.5f));
 }
 
 SystemState& Presenter::getSystemState(){ //not const, we want to perform actions on this once returned
@@ -93,7 +133,7 @@ void Presenter::setViewportTransform(float viewportRatio){
     m_viewportTransform = glm::scale(glm::mat4(1.0f), glm::vec3(viewportRatio, viewportRatio, 1.0f));
 }
 
-void Presenter::m_connect(glm::mat4& trans, glm::vec2 u, glm::vec2 v, float width){
+void Presenter::m_connect(glm::mat4& trans, glm::vec2 u, glm::vec2 v, glm::vec2 centre, float width){
     vec2 direction = u - v;
     float distance = glm::length(direction);
 
@@ -104,6 +144,7 @@ void Presenter::m_connect(glm::mat4& trans, glm::vec2 u, glm::vec2 v, float widt
         theta = glm::atan((float) direction.y / direction.x);
     }
 
+    trans = glm::translate(trans, vec3(centre, 1.0f));
     trans = glm::rotate(trans, theta, glm::vec3(0.0f, 0.0f, 1.0f));
     trans = glm::scale(trans, glm::vec3(distance, width, 1.0f));
 }

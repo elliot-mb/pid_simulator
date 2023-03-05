@@ -10,6 +10,8 @@ public:
 
     Spring(glm::vec2 posA, glm::vec2 posB, float mass, float k);
 
+    void accept(DrawingVisitor & visitor);
+
     const float getK();
 
 private:

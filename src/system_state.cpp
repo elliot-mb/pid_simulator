@@ -18,9 +18,14 @@ SystemState::SystemState():
 void SystemState::addComponent(PointMass& pointMass){
     m_components.push_back(&pointMass);
 }
-
 void SystemState::addComponent(Beam& beam){
     m_components.push_back(&beam);
+}
+void SystemState::addComponent(Spring& spring){
+    m_components.push_back(&spring);
+}
+void SystemState::addComponent(Slider& slider){
+    m_components.push_back(&slider);
 }
 
 const vector<Component*>& SystemState::getComponents(){

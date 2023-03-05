@@ -5,6 +5,7 @@
 #include "point_mass.hpp"
 #include "beam.hpp"
 #include "spring.hpp"
+#include "slider.hpp"
 
 #include <vector>
 #include <glm/glm.hpp>
@@ -18,6 +19,8 @@ public:
 
     void addComponent(PointMass& pointMass);
     void addComponent(Beam& beam);
+    void addComponent(Spring& spring);
+    void addComponent(Slider& slider);
     const vector<Component*>& getComponents(); //gets the reference to our components vector
 
 private:

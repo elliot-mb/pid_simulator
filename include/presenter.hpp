@@ -40,6 +40,7 @@ public:
     void visit(PointMass& pointMass);
     void visit(Beam& beam);
     void visit(Spring& spring);
+    void visit(Slider& slider);
 
     SystemState& getSystemState();
     View& getView();
@@ -61,7 +62,7 @@ private:
 
     glm::mat4 m_viewportTransform;
 
-    void m_connect(glm::mat4& trans, glm::vec2 u, glm::vec2 v, float width);
+    void m_connect(glm::mat4& trans, glm::vec2 u, glm::vec2 v, glm::vec2 centre, float width);
 };
 
 #endif
