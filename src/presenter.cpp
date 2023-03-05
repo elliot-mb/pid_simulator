@@ -25,25 +25,23 @@ void Presenter::visit(PointMass& pointMass){
 }
 void Presenter::visit(Beam& beam){
 
-    Beam* b = dynamic_cast<Beam*>(&beam);
-    vec2 direction = b->getPosA() - b->getPosB();
-    float distance = glm::length(direction);
-
-    float theta;
-    if(direction.x == 0.0f){
-        theta = glm::half_pi<float>();
-    }else{
-        theta = glm::atan((float) direction.y / direction.x);
-    }
-
     glm::mat4 trans = m_viewportTransform;
     trans = glm::translate(trans, glm::vec3(beam.getPos(), 1.0f));
-    trans = glm::rotate(trans, theta, glm::vec3(0.0f, 0.0f, 1.0f));
-    trans = glm::scale(trans, glm::vec3(distance, 0.1f, 1.0f));
+    m_connect(trans, beam.getPosA(), beam.getPosB(), 0.1f);
 
     m_transformBuffer.push_back(trans);
     m_indexBuffer.push_back(m_view.getSquare());
     m_colourBuffer.push_back(glm::vec3(0.5f, 0.5f, 0.5f));
+}
+void Presenter::visit(Spring& spring){
+
+    glm::mat4 trans = m_viewportTransform;
+    trans = glm::translate(trans, glm::vec3(spring.getPos(), 1.0f));
+    m_connect(trans, spring.getPosA(), spring.getPosB(), 0.1f);
+
+    m_transformBuffer.push_back(trans);
+    m_indexBuffer.push_back(m_view.getSquare());
+    m_colourBuffer.push_back(glm::vec3(0.5f, 1.0f, 0.5f));
 }
 
 SystemState& Presenter::getSystemState(){ //not const, we want to perform actions on this once returned
@@ -93,4 +91,19 @@ void Presenter::drawView(){
 
 void Presenter::setViewportTransform(float viewportRatio){
     m_viewportTransform = glm::scale(glm::mat4(1.0f), glm::vec3(viewportRatio, viewportRatio, 1.0f));
+}
+
+void Presenter::m_connect(glm::mat4& trans, glm::vec2 u, glm::vec2 v, float width){
+    vec2 direction = u - v;
+    float distance = glm::length(direction);
+
+    float theta;
+    if(direction.x == 0.0f){
+        theta = glm::half_pi<float>();
+    }else{
+        theta = glm::atan((float) direction.y / direction.x);
+    }
+
+    trans = glm::rotate(trans, theta, glm::vec3(0.0f, 0.0f, 1.0f));
+    trans = glm::scale(trans, glm::vec3(distance, width, 1.0f));
 }

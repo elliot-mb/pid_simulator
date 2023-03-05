@@ -21,13 +21,12 @@ public:
     // PointMass& getPointB();
 
     //inherited
-    void accept(DrawingVisitor& visitor);
-
+    void            accept(DrawingVisitor& visitor);
     const glm::vec2 getPos(); //gets centre
     void            setPos(glm::vec4 pos); //pos.x, pos.y -> posA, pos.z, pos.w -> posB
-    const float getMass();
+    const float     getMass();
 
-private:
+protected:
     const float m_length; //calculated in constructor
 
     PointMass m_pointA;

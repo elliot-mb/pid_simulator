@@ -39,6 +39,7 @@ public:
     //inherited from DrawingVisitor
     void visit(PointMass& pointMass);
     void visit(Beam& beam);
+    void visit(Spring& spring);
 
     SystemState& getSystemState();
     View& getView();
@@ -59,6 +60,8 @@ private:
     vector<glm::vec3> m_colourBuffer; 
 
     glm::mat4 m_viewportTransform;
+
+    void m_connect(glm::mat4& trans, glm::vec2 u, glm::vec2 v, float width);
 };
 
 #endif

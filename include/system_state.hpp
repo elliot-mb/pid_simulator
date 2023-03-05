@@ -4,6 +4,7 @@
 #include "component.hpp"
 #include "point_mass.hpp"
 #include "beam.hpp"
+#include "spring.hpp"
 
 #include <vector>
 #include <glm/glm.hpp>
