@@ -6,6 +6,7 @@
 #include "beam.hpp"
 #include "spring.hpp"
 #include "slider.hpp"
+#include "disc.hpp"
 
 #include <vector>
 #include <glm/glm.hpp>
@@ -17,10 +18,8 @@ class SystemState
 public:
     SystemState();
 
-    void addComponent(PointMass& pointMass);
-    void addComponent(Beam& beam);
-    void addComponent(Spring& spring);
-    void addComponent(Slider& slider);
+    void addComponent(Component& component); 
+
     const vector<Component*>& getComponents(); //gets the reference to our components vector
 
 private:

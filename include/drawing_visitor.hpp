@@ -10,6 +10,7 @@ class PointMass;
 class Beam;
 class Spring;
 class Slider;
+class Disc;
 
 class DrawingVisitor //interface
 {
@@ -20,7 +21,7 @@ public:
     virtual void visit(Beam& beam) = 0;
     virtual void visit(Spring& spring) = 0;
     virtual void visit(Slider& slider) = 0;
-
+    virtual void visit(Disc& disc) = 0;
 };
 
 #endif

@@ -52,12 +52,13 @@ void Presenter::visit(Slider& slider){
 }
 void Presenter::visit(Spring& spring){
 
+    const float arrowHeadHeight = 0.25f / spring.getCurrentLength();
+    const float arrowHeadOffset = 0.5f * (1 - arrowHeadHeight);
+
     //triangle 1
     glm::mat4 trans = m_viewportTransform;
     m_connect(trans, spring.getPosA(), spring.getPosB(), spring.getPos(), 0.1f);
-    trans = glm::rotate(trans, glm::radians<float>(90), glm::vec3(0.0f, 0.0f, 1.0f));
-    trans = glm::translate(trans, glm::vec3(0.0f, 0.25f, 0.0f));
-    trans = glm::scale(trans, glm::vec3(1.0f, 0.5f, 1.0f));
+    m_arrow(trans, arrowHeadOffset, arrowHeadHeight, 90);
 
     m_transformBuffer.push_back(trans);
     m_indexBuffer.push_back(m_view.getTriangle());
@@ -66,9 +67,7 @@ void Presenter::visit(Spring& spring){
     //triangle 2
     trans = m_viewportTransform;
     m_connect(trans, spring.getPosA(), spring.getPosB(), spring.getPos(), 0.1f);
-    trans = glm::rotate(trans, glm::radians<float>(270), glm::vec3(0.0f, 0.0f, 1.0f));
-    trans = glm::translate(trans, glm::vec3(0.0f, 0.25f, 0.0f));
-    trans = glm::scale(trans, glm::vec3(1.0f, 0.5f, 1.0f));
+    m_arrow(trans, arrowHeadOffset, arrowHeadHeight, 270);
 
     m_transformBuffer.push_back(trans);
     m_indexBuffer.push_back(m_view.getTriangle());
@@ -76,12 +75,34 @@ void Presenter::visit(Spring& spring){
 
     //rect 
     trans = m_viewportTransform;
-    m_connect(trans, spring.getPosA(), spring.getPosB(), spring.getPos(), 0.05f);
-    trans = glm::scale(trans, glm::vec3(1.0f, 0.5f, 1.0f));
+    m_connect(trans, spring.getPosA(), spring.getPosB(), spring.getPos(), 0.025f);
+    trans = glm::scale(trans, glm::vec3(0.95f, 1.0f, 1.0f));
 
     m_transformBuffer.push_back(trans);
     m_indexBuffer.push_back(m_view.getSquare());
     m_colourBuffer.push_back(glm::vec3(0.0f, 1.0f, 0.5f));
+}
+void Presenter::visit(Disc& disc){
+
+    const float r = disc.getRadius();
+    const glm::vec3 translate = vec3(disc.getPos(), 1.0f);
+
+    const glm::mat4 transTranslate = glm::translate(m_viewportTransform, translate);
+    const glm::mat4 transDisc = 
+        glm::rotate(
+            glm::scale(transTranslate, glm::vec3(r, r, 1.0f)),
+            disc.getTheta(),
+            vec3(0.0f, 0.0f, 1.0f)
+        );
+    const glm::mat4 transPoint = glm::scale(transTranslate, glm::vec3(0.1f, 0.1f, 1.0f));
+
+    m_transformBuffer.push_back(transDisc);
+    m_indexBuffer.push_back(m_view.getCircle());
+    m_colourBuffer.push_back(glm::vec3(0.3f, 0.3f, 0.3f));
+
+    m_transformBuffer.push_back(transPoint);
+    m_indexBuffer.push_back(m_view.getCircle());
+    m_colourBuffer.push_back(glm::vec3(0.6f, 0.6f, 0.6f));
 }
 
 SystemState& Presenter::getSystemState(){ //not const, we want to perform actions on this once returned
@@ -147,4 +168,11 @@ void Presenter::m_connect(glm::mat4& trans, glm::vec2 u, glm::vec2 v, glm::vec2 
     trans = glm::translate(trans, vec3(centre, 1.0f));
     trans = glm::rotate(trans, theta, glm::vec3(0.0f, 0.0f, 1.0f));
     trans = glm::scale(trans, glm::vec3(distance, width, 1.0f));
+}
+
+//sets up triangle transformations to draw an arrow tip on given parameters
+void Presenter::m_arrow(glm::mat4& trans, float headOffset, float headHeight, float angle){
+    trans = glm::rotate(trans, glm::radians<float>(angle), glm::vec3(0.0f, 0.0f, 1.0f));
+    trans = glm::translate(trans, glm::vec3(0.0f, headOffset, 0.0f));
+    trans = glm::scale(trans, glm::vec3(1.0f, headHeight, 1.0f));
 }

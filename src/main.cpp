@@ -8,6 +8,7 @@
 #include "../include/beam.hpp"
 #include "../include/spring.hpp"
 #include "../include/point_mass.hpp"
+#include "../include/disc.hpp"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -76,7 +77,11 @@ int main(){
     glfwGetFramebufferSize(window, &width, &height);
     framebuffer_resize_callback(window, width, height);
     
-    systemState->addComponent(*(new Spring(vec2(0.5f, 0.5f), vec2(0.8f, 0.4f), 1.0f, 1.0f)));
+    Spring s(vec2(-0.2f, 0.2f), vec2(-0.4f, 0.4f), 1.0f, 1.0f);
+    Disc d(vec2(0.0f, 0.0f), 5.0f, 1.0f);
+
+    systemState->addComponent(d);
+    systemState->addComponent(s);
     systemState->addComponent(*(new Slider(vec2(-0.5f, 0.1f), vec2(-0.8f, 0.4f), 1.0f)));
     systemState->addComponent(*(new Beam(vec2(0.5f, -0.1f), vec2(0.8f, -0.4f), 1.0f)));
 
@@ -85,6 +90,10 @@ int main(){
         processInput(window);   
 
         float timestamp = (float)glfwGetTime();
+
+        s.setPos(vec4(sin(timestamp), cos(timestamp), sin((timestamp * 2.0f) + radians<float>(180)), cos((timestamp * 2.0f) + radians<float>(180))));
+
+        d.setTheta(timestamp);
 
         glfwGetFramebufferSize(window, &width, &height);
 

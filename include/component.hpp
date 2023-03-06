@@ -23,6 +23,12 @@ public:
 
     virtual const float getMass() = 0;
 
+// private:
+
+//     glm::vec2 m_pos;
+//     glm::vec2 m_vel;
+//     glm::vec2 m_acc;
+//     const float m_mass;
 
 };
 

@@ -13,6 +13,7 @@ public:
     void accept(DrawingVisitor & visitor);
 
     const float getK();
+    const float getCurrentLength();
 
 private:
 
